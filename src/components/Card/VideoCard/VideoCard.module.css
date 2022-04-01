@@ -1,0 +1,66 @@
+.video_card {
+  max-width: 17rem;
+  cursor: pointer;
+  margin-bottom: var(--sp-1-5);
+  gap: var(--sp-75);
+  font-family: sans-serif;
+  max-height: 19rem;
+}
+
+.video_card:hover {
+  box-shadow: 0px 0.1rem 0.2rem var(--white);
+}
+
+.top_wrapper {
+  position: relative;
+  max-width: 17rem;
+  padding: 2px;
+}
+
+.channel_icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: var(--sp-0-25);
+  border-radius: 50%;
+}
+
+.card_img {
+  width: 17rem;
+  object-fit: cover;
+  height: 10rem;
+}
+
+.video_length {
+  position: absolute;
+  bottom: 8px;
+  right: 3px;
+  background-color: var(--bg-black);
+  color: var(--white);
+  padding: 4px;
+  font-size: 1rem;
+}
+
+.bottom_right_wrapper {
+  gap: var(--sp-0-75);
+  padding: var(--sp-0-25);
+  background-color: transparent;
+  color: var(--gray);
+}
+
+.video_title {
+  color: var(--white);
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  font-weight: 500;
+  line-height: var(--sp-1-25);
+}
+
+.bottom_right_wrapper > span {
+  justify-content: flex-start;
+  gap: var(--sp-0-5);
+  font-size: medium;
+}
