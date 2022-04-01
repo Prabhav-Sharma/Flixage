@@ -8,7 +8,7 @@ const fetchVideos = async (setterFunc) => {
     });
     setterFunc(response.data.videos);
   } catch (e) {
-    console.log("arreeeeeee", e);
+    console.log(e);
   }
 };
 

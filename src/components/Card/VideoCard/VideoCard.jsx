@@ -16,7 +16,7 @@ function VideoCard({ video }) {
   return (
     <div className={`${styles.video_card} flex-col`}>
       <div className={styles.top_wrapper}>
-        <img className={styles.card_img} src={thumbnail} />
+        <img className={styles.card_img} src={thumbnail} alt={title} />
         <p className={styles.video_length}>{playtime}</p>
       </div>
       <div className="flex-row">

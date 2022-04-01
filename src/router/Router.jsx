@@ -11,6 +11,7 @@ import {
   WatchLater,
   Video,
   Liked,
+  NotFound,
 } from "../pages";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/watchlater" element={<WatchLater />} />
       <Route path="/playlists" element={<Playlists />} />
       <Route path="/playlist/:playlistID" element={<Playlist />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

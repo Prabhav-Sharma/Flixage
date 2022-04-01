@@ -8,6 +8,7 @@ import Playlists from "./Playlists/Playlists";
 import WatchLater from "./WatchLater/WatchLater";
 import Video from "./Video/Video";
 import Liked from "./Liked/Liked";
+import NotFound from "./NotFound/NotFound";
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   WatchLater,
   Video,
   Liked,
+  NotFound,
 };
