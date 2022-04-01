@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Nosifer&display=swap");
+
+.nav_bar {
+  max-width: 100vw;
+  background-color: #4c5f94;
+  padding: var(--sp-1);
+  justify-content: space-around;
+  align-items: center;
+  z-index: 15;
+  position: relative;
+}
+
+.nav_heading {
+  font-family: "Nosifer", cursive;
+  color: var(--white);
+  font-size: 2.2rem;
+}
+
+.nav_heading:hover,
+.profile_icon:hover {
+  animation: shake 0.5s;
+  cursor: pointer;
+}
+
+.menu_icon {
+  display: flex;
+  justify-content: center;
+  color: var(--white);
+  font-size: 2.2rem;
+  background-color: transparent;
+  padding: var(--sp-0-75);
+  border-radius: 50%;
+  transition: all linear 0.3s;
+}
+
+.menu_icon:hover {
+  background-color: var(--white);
+  cursor: pointer;
+  color: var(--black);
+  opacity: 0.8;
+}
+
+.header {
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_search {
+  padding: var(--sp-0-5);
+  border-radius: var(--sp-0-5);
+  max-width: 20rem;
+  flex-grow: 1;
+  background-image: url("https://res.cloudinary.com/carsmart/image/upload/v1647404723/icons/search_i9fe3a.png");
+  background-position: 7px 8px;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  padding-left: var(--sp-1-75);
+  font-size: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.profile_icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: invert(100%);
+  border-radius: 50%;
+  padding: var(--sp-0-25);
+  border: 1px solid var(--black);
+  cursor: pointer;
+}
+.red {
+  color: var(--black);
+}
+
+aside {
+  position: fixed;
+  z-index: 3;
+  width: 15rem;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 100%;
+  background-color: var(--bg-black);
+  transition: 0.4s all ease;
+  top:0;
+  opacity: 0.95;
+}
+
+.aside_hidden {
+  left: -17rem;
+}
+.list {
+  width: 100%;
+  align-items: flex-start;
+  gap: var(--sp-1);
+  display: flex;
+}
+
+.list>li{
+  width: 100%;
+}
+ 
+.link_style {
+  display: flex;
+  overflow: hidden;
+  font-size: 1.4rem;
+  color: var(--white);
+  padding: var(--sp-1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap:1rem;
+  text-decoration: none;
+} 
+
+.link_style_active{
+  color: var(--prim-color);
+  background-color: var(--white);
+}
+
+.list > li:hover {
+  background-color: var(--prim-color);
+}
+
+.sidebar_overlay{
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-black);
+  opacity: 0.6;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.sidebar_overlay_hidden{
+  display: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

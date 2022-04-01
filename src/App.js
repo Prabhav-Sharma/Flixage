@@ -1,9 +1,14 @@
 import "./App.css";
+import Navigation from "./components/Navigation/Navigation";
+import Router from "./router/Router";
 
 function App() {
   return (
     <div className="App">
-      <h1>Flixage</h1>
+      <Navigation />
+      <main>
+        <Router />
+      </main>
     </div>
   );
 }
