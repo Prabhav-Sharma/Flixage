@@ -1,0 +1,5 @@
+@import url("./styles/utils.css");
+
+html {
+  background-color: var(--bg-black);
+}

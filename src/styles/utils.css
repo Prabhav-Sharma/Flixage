@@ -1,0 +1,38 @@
+/* reset css import from meyerweb.com */
+@import url("./reset.css");
+
+body {
+  font-family: Georgia, Times, Times New Roman, serif;
+}
+
+:root {
+  /*  Spacing Variables */
+  --sp-0-25: 0.25rem;
+  --sp-0-5: 0.5rem;
+  --sp-0-75: 0.75rem;
+  --sp-1: 1rem;
+  --sp-1-25: 1.25rem;
+  --sp-1-5: 1.5rem;
+  --sp-1-75: 1.75rem;
+  --sp-2: 2rem;
+  --sp-2-5: 2.5rem;
+
+  /* Color variables  */
+  --black: #0a090c;
+  --white: #f7f7ff;
+  --bg-black: #313335;
+  --prim-color: #4c5f94;
+  --prim-darker: #455787;
+  --sec-color: #ea526f;
+  --gray: #dcdcdc;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
