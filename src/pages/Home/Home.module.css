@@ -1,0 +1,31 @@
+.section{
+    background-image: url("https://res.cloudinary.com/carsmart/image/upload/v1648868859/Flixage/UI/astronaut-hanging-on-moon-gray_ggn9mb.png");
+    background-repeat: no-repeat;
+    background-size: 98%;
+}
+
+.container_div{
+    width: 100%;
+    align-items: center;
+    gap:3rem;
+    margin-top: 10rem;
+}
+
+.heading{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.btn_container{
+    gap:var(--sp-1-25);
+}
+
+.btn_container>button{
+    width: 12rem;
+    height: max-content;
+}
+
+.btn_container>button:hover{
+   opacity: 1.5;
+}
