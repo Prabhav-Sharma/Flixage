@@ -8,7 +8,7 @@ import { useToggle } from "../../hooks";
 import { NavLink } from "react-router-dom";
 
 function Navigation() {
-  const { toggle: visible, setToggle: setVisible } = useToggle(true);
+  const { toggle: visible, setToggle: setVisible } = useToggle(false);
 
   const linkStyle = ({ isActive }) =>
     isActive
@@ -72,12 +72,12 @@ function Navigation() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/playlists" className={styles.link_style}>
+              <NavLink to="/playlists" className={linkStyle}>
                 <BsPlayBtn /> Playlists
               </NavLink>
             </li>
             <li>
-              <NavLink to="/liked" className={styles.link_style}>
+              <NavLink to="/liked" className={linkStyle}>
                 <BsHeart /> Liked videos
               </NavLink>
             </li>
