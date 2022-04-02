@@ -72,12 +72,12 @@ function Navigation() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/playlists" className={styles.link_style}>
+              <NavLink to="/playlists" className={linkStyle}>
                 <BsPlayBtn /> Playlists
               </NavLink>
             </li>
             <li>
-              <NavLink to="/liked" className={styles.link_style}>
+              <NavLink to="/liked" className={linkStyle}>
                 <BsHeart /> Liked videos
               </NavLink>
             </li>
