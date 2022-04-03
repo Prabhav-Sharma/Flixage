@@ -60,6 +60,7 @@ function Login() {
           onChange={(e) =>
             formDispatch({ type: "EMAIL", payload: { email: e.target.value } })
           }
+          autoComplete={"email"}
         />
 
         <TextInput
@@ -73,6 +74,7 @@ function Login() {
               payload: { password: e.target.value },
             })
           }
+          autoComplete={"current-password"}
         />
         <span className={`${styles.form_span} flex-row`}>
           <label>

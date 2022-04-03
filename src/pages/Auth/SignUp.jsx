@@ -61,6 +61,7 @@ function SignUp() {
               payload: { fullName: e.target.value },
             })
           }
+          autoComplete={"name"}
         />
         <TextInput
           type={"text"}
@@ -73,6 +74,7 @@ function SignUp() {
               payload: { email: e.target.value },
             })
           }
+          autoComplete={"email"}
         />
         <TextInput
           type={"password"}
@@ -85,6 +87,7 @@ function SignUp() {
               payload: { password: e.target.value },
             })
           }
+          autoComplete={"new-password"}
         />
         <TextInput
           type={"password"}
@@ -97,6 +100,7 @@ function SignUp() {
               payload: { confirmPassword: e.target.value },
             })
           }
+          autoComplete={"new-password"}
         />
         <label>
           <input

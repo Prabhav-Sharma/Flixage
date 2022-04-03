@@ -3,7 +3,14 @@ import { useToggle } from "../../hooks";
 import styles from "./TextInput.module.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
-function TextInput({ legend, value, onChange, placeholder, type }) {
+function TextInput({
+  legend,
+  value,
+  onChange,
+  placeholder,
+  type,
+  autoComplete,
+}) {
   const { toggle: visible, setToggle: setVisible } = useToggle(false);
 
   const passwordIcon = visible ? (
@@ -27,6 +34,7 @@ function TextInput({ legend, value, onChange, placeholder, type }) {
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          autoComplete={autoComplete}
         />
         {passwordIcon}
       </span>
@@ -37,6 +45,7 @@ function TextInput({ legend, value, onChange, placeholder, type }) {
         className={`${styles.input} input-text`}
         type={type}
         placeholder={placeholder}
+        autoComplete={autoComplete}
       />
     );
 
