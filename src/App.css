@@ -2,4 +2,5 @@
 
 html {
   background-color: var(--bg-black);
+  accent-color:var(--prim-color);
 }
