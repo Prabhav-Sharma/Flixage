@@ -14,8 +14,8 @@ function Home() {
           <button className="prim-btn" onClick={() => navigate("/videos")}>
             Watch Now
           </button>
-          <button className="prim-acc-btn" onClick={() => navigate("/signup")}>
-            Create Account
+          <button className="prim-acc-btn" onClick={() => navigate("/login")}>
+            Login
           </button>
         </div>
       </div>

@@ -16,7 +16,7 @@ const authFormReducer = (state, action) => {
       return { ...state, checkbox: !state.checkbox };
 
     default:
-      throw new Error(action.type);
+      return state;
   }
 };
 

@@ -11,7 +11,7 @@ const authReducer = (state, action) => {
       return { ...state, isAuthenticated: false, user: {} };
 
     default:
-      throw new Error(action.type, "Wrong action type");
+      return state;
   }
 };
 

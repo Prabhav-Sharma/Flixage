@@ -3,7 +3,7 @@ import styles from "./Auth.module.css";
 import { TextInput } from "../../components";
 import { Link } from "react-router-dom";
 import { useAuthForm, useDocumentTitle } from "../../hooks";
-import { signup } from "../../services/APICalls";
+import { signup } from "../../services";
 import { ImSpinner9 } from "react-icons/im";
 import { useToggle } from "../../hooks";
 import { useAuth } from "../../contexts/providers/AuthProvider";
@@ -51,9 +51,9 @@ function SignUp() {
       <form className={`${styles.form} flex-col`}>
         <h1 className={styles.form_heading}>Sign Up</h1>
         <TextInput
-          type={"text"}
-          placeholder={"John Doe"}
-          legend={"Full Name"}
+          type="text"
+          placeholder="John Doe"
+          legend="Full Name"
           value={fullName}
           onChange={(e) =>
             formDispatch({
@@ -61,12 +61,12 @@ function SignUp() {
               payload: { fullName: e.target.value },
             })
           }
-          autoComplete={"name"}
+          autoComplete="name"
         />
         <TextInput
-          type={"text"}
-          placeholder={"John.doe@email.com"}
-          legend={"Email"}
+          type="text"
+          placeholder="John.doe@email.com"
+          legend="Email"
           value={email}
           onChange={(e) =>
             formDispatch({
@@ -74,12 +74,12 @@ function SignUp() {
               payload: { email: e.target.value },
             })
           }
-          autoComplete={"email"}
+          autoComplete="email"
         />
         <TextInput
-          type={"password"}
-          placeholder={"••••••••••"}
-          legend={"Password"}
+          type="password"
+          placeholder="••••••••••"
+          legend="Password"
           value={password}
           onChange={(e) =>
             formDispatch({
@@ -87,12 +87,12 @@ function SignUp() {
               payload: { password: e.target.value },
             })
           }
-          autoComplete={"new-password"}
+          autoComplete="new-password"
         />
         <TextInput
-          type={"password"}
-          placeholder={"••••••••••"}
-          legend={"Confirm Password"}
+          type="password"
+          placeholder="••••••••••"
+          legend="Confirm Password"
           value={confirmPassword}
           onChange={(e) =>
             formDispatch({
@@ -100,13 +100,13 @@ function SignUp() {
               payload: { confirmPassword: e.target.value },
             })
           }
-          autoComplete={"new-password"}
+          autoComplete="new-password"
         />
         <label>
           <input
             type="checkbox"
             value={checkbox}
-            onChange={(e) =>
+            onChange={() =>
               formDispatch({
                 type: "CHECKBOX",
               })

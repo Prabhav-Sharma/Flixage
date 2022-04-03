@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Auth.module.css";
 import { useAuthForm, useDocumentTitle, useToggle } from "../../hooks";
 import { TextInput } from "../../components";
-import { login } from "../../services/authCalls";
+import { login } from "../../services";
 import { ImSpinner9 } from "react-icons/im";
 import { useAuth } from "../../contexts/providers/AuthProvider";
 import { EMAIL_REGEX } from "../../utils";

@@ -7,24 +7,24 @@ body {
 
 :root {
   /*  Spacing Variables */
-  --sp-0-25: 0.25rem;
-  --sp-0-5: 0.5rem;
-  --sp-0-75: 0.75rem;
-  --sp-1: 1rem;
-  --sp-1-25: 1.25rem;
-  --sp-1-5: 1.5rem;
-  --sp-1-75: 1.75rem;
-  --sp-2: 2rem;
-  --sp-2-5: 2.5rem;
+  --rem-0-25: 0.25rem;
+  --rem-0-5: 0.5rem;
+  --rem-0-75: 0.75rem;
+  --rem-1: 1rem;
+  --rem-1-25: 1.25rem;
+  --rem-1-5: 1.5rem;
+  --rem-1-75: 1.75rem;
+  --rem-2: 2rem;
+  --rem-2-5: 2.5rem;
 
   /* Color variables  */
-  --black: #0a090c;
-  --white: #f7f7ff;
-  --bg-black: #212121;
-  --prim-color: #4c5f94;
-  --prim-darker: #455787;
-  --sec-color: #ea526f;
-  --gray: #dcdcdc;
+  --color-black: #0a090c;
+  --color-white: #f7f7ff;
+  --color-bg-black: #212121;
+  --color-primary: #4c5f94;
+  --color-primary-darker: #455787;
+  --color-secondary: #ea526f;
+  --color-gray: #dcdcdc;
 }
 
 .flex-row {
@@ -39,39 +39,39 @@ body {
 
 
 .prim-btn{
-  color:var(--white);
-  background-color: var(--prim-color);
+  color:var(--color-white);
+  background-color: var(--color-primary);
   border: none;
-  padding: var(--sp-0-75);
+  padding: var(--rem-0-75);
   font-size: 1rem;
-  border-radius: var(--sp-0-5);
+  border-radius: var(--rem-0-5);
   cursor: pointer;
 }
 
 .prim-acc-btn{
-  color: var(--prim-color);
-  background-color: var(--white);
-  outline: 1px solid var(--prim-color);
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  outline: 1px solid var(--color-primary);
   border: none;
-  padding: var(--sp-0-75);
+  padding: var(--rem-0-75);
   font-size: 1rem;
-  border-radius: var(--sp-0-5);
+  border-radius: var(--rem-0-5);
   cursor: pointer;
 }
 
 .prim-btn:hover{
- background-color: var(--prim-darker); ;
+ background-color: var(--color-primary-darker); ;
 }
 
 .prim-acc-btn:hover{
-  background-color: var(--gray);
+  background-color: var(--color-gray);
 }
 
 .input-text{
   font-family: sans-serif;
-  border-radius: var(--sp-0-5);
-  padding: var(--sp-0-25);
-  padding-left: var(--sp-0-5);
+  border-radius: var(--rem-0-5);
+  padding: var(--rem-0-25);
+  padding-left: var(--rem-0-5);
   height: 1.8rem;
   font-size: 1rem;
 }

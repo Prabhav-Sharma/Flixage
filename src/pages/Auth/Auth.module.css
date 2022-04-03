@@ -1,24 +1,22 @@
 .section{
-align-items: center;
-justify-content: center;
-height:calc( 100vh - 91.6px);
+    align-items: center;
+    justify-content: center;
+    height:calc( 100vh - 91.6px);
 }
 
-
 .form{
-    background-color: var(--white);
-    outline: var(--gray) solid 6px;
+    background-color: var(--color-white);
+    outline: var(--color-gray) solid 6px;
     width: max-content;
-    gap: var(--sp-1);
-    padding: var(--sp-1-5);
-    border-radius: var(--sp-0-5);
+    gap: var(--rem-1);
+    padding: var(--rem-1-5);
+    border-radius: var(--rem-0-5);
     width: 22rem;
 }
 
-
 .input{
     width: 100%;
-    margin-top: var(--sp-0-5);
+    margin-top: var(--rem-0-5);
 }
 
 .password_container{
