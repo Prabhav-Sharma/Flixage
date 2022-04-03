@@ -1,3 +1,4 @@
 import useDocumentTitle from "./useDocumentTitle";
 import useToggle from "./useToggle";
-export { useDocumentTitle, useToggle };
+import useAuthForm from "./useAuthForm/useAuthForm";
+export { useDocumentTitle, useToggle, useAuthForm };
