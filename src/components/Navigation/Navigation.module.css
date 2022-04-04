@@ -82,7 +82,7 @@ aside {
   height: 100vh;
   background-color: var(--color-bg-black);
   transition: 0.4s all ease;
-  top:5.7rem;
+  top:6.7rem;
   opacity: 0.95;
 }
 
@@ -103,7 +103,7 @@ aside {
 .link_style {
   display: flex;
   overflow: hidden;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--color-white);
   padding: var(--rem-1);
   cursor: pointer;
@@ -123,7 +123,7 @@ aside {
 
 .sidebar_overlay{
   position: fixed;
-  top: 0;
+  top:5.7rem;
   left:0;
   right: 0;
   bottom: 0;
