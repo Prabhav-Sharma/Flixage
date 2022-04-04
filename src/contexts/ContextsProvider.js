@@ -1,12 +1,15 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./providers/AuthProvider";
 import { VideosProvider } from "./providers/VideosProvider";
 
 function ContextsProvider({ children }) {
   return (
-    <BrowserRouter>
-      <VideosProvider>{children}</VideosProvider>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <VideosProvider>{children}</VideosProvider>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

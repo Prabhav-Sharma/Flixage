@@ -1,4 +1,5 @@
 import axios from "axios";
+import { login, signup } from "./authCalls";
 
 const fetchVideos = async (setterFunc) => {
   try {
@@ -12,4 +13,4 @@ const fetchVideos = async (setterFunc) => {
   }
 };
 
-export { fetchVideos };
+export { fetchVideos, login, signup };

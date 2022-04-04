@@ -14,11 +14,11 @@
 .heading{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 2rem;
-    color: var(--white);
+    color: var(--color-white);
 }
 
 .btn_container{
-    gap:var(--sp-1-25);
+    gap:var(--rem-1-25);
 }
 
 .btn_container>button{
@@ -29,3 +29,18 @@
 .btn_container>button:hover{
    opacity: 1.5;
 }
+
+
+
+@media only screen and (min-width:1440px){
+    .section{
+        background-size: 90%;
+    }
+  }
+  
+  @media only screen and (max-width:768px){
+    .section{
+        background-size: 120%;
+    }
+  }
+  

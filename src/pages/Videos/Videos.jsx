@@ -1,10 +1,10 @@
 import React from "react";
-import VideoCard from "../../components/Card/VideoCard/VideoCard";
+import { VideoCard } from "../../components";
 import styles from "./Videos.module.css";
 import { useDocumentTitle } from "../../hooks";
 import { useVideos } from "../../contexts/providers/VideosProvider";
 import { useEffect } from "react";
-import { fetchVideos } from "../../services/APICalls";
+import { fetchVideos } from "../../services";
 
 function Videos() {
   const { videos, setVideos } = useVideos();

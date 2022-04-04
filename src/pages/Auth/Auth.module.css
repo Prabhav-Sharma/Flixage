@@ -1,0 +1,64 @@
+.section{
+    align-items: center;
+    justify-content: center;
+    height:calc( 100vh - 91.6px);
+}
+
+.form{
+    background-color: var(--color-white);
+    outline: var(--color-gray) solid 6px;
+    width: max-content;
+    gap: var(--rem-1);
+    padding: var(--rem-1-5);
+    border-radius: var(--rem-0-5);
+    width: 22rem;
+}
+
+.input{
+    width: 100%;
+    margin-top: var(--rem-0-5);
+}
+
+.password_container{
+    position: relative;
+}
+
+.password_invisible{
+    top:-1px;
+    font-size: 1.6rem;
+    position: absolute;
+    right: 5px;
+}
+
+
+.form_heading{
+    text-align: center;
+    font-size: 2rem;
+    color:var(--prim-color);
+}
+
+.link{
+    color:var(--prim-darker);
+    text-decoration:none;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.form_span{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spinner {
+    font-size: 0.9rem;
+    animation: spin infinite 0.6s linear;
+  }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

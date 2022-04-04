@@ -1,0 +1,17 @@
+.password_container{
+    position: relative;
+}
+
+.password_icon{
+    top:-3px;
+    font-size: 1.6rem;
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+}
+
+
+.input{
+    width: 95%;
+    margin-top: var(--rem-0-5);
+}

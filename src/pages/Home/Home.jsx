@@ -12,10 +12,10 @@ function Home() {
         <h2 className={styles.heading}>Home to all your favourite videos</h2>
         <div className={`${styles.btn_container} flex-row`}>
           <button className="prim-btn" onClick={() => navigate("/videos")}>
-            Get Started
+            Watch Now
           </button>
-          <button className="prim-acc-btn" onClick={() => navigate("/signup")}>
-            Create Account
+          <button className="prim-acc-btn" onClick={() => navigate("/login")}>
+            Login
           </button>
         </div>
       </div>
