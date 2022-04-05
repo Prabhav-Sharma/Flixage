@@ -82,7 +82,7 @@ aside {
   height: 100vh;
   background-color: var(--color-bg-black);
   transition: 0.4s all ease;
-  top:6.7rem;
+  padding-top:var(--rem-1);
   opacity: 0.95;
 }
 

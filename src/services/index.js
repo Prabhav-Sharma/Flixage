@@ -7,6 +7,12 @@ import {
   clearAllHistory,
 } from "./historyAPI";
 
+import {
+  fetchWatchLater,
+  addToWatchLater,
+  deleteFromWatchLater,
+} from "./watchLaterAPI";
+
 const fetchVideos = async (setterFunc) => {
   try {
     const response = await axios({
@@ -27,4 +33,7 @@ export {
   addToHistory,
   deleteFromHistory,
   clearAllHistory,
+  fetchWatchLater,
+  addToWatchLater,
+  deleteFromWatchLater,
 };
