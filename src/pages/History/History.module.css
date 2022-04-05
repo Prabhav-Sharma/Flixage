@@ -1,0 +1,36 @@
+.page_heading, .no_history_msg{
+    color:var(--color-white);
+    margin-top: var(--rem-1-5);
+    font-size: var(--rem-2);
+}
+.wrapper{
+    gap:var(--rem-1-75);
+}
+
+.clear_btn{
+    align-self: flex-start;
+    width: 15rem;
+    margin: var(--rem-1);
+}
+
+.btn_icon{
+    font-size: var(--rem-1-25);
+    vertical-align:sub;
+}
+
+.no_history_msg{
+    margin-top: var(--rem-2-5);
+    font-size: var(--rem-1-5);
+    text-align: center;
+}
+
+.explore_btn, .dummy_btn{
+    width: 15rem;
+    align-self: center;
+}
+
+.link_style{
+    color: var(--white);
+    text-decoration: none;
+}
+
