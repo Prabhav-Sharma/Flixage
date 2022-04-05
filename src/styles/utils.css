@@ -16,6 +16,8 @@ body {
   --rem-1-75: 1.75rem;
   --rem-2: 2rem;
   --rem-2-5: 2.5rem;
+  --rem-2-75: 2.75rem;
+  --rem-3: 3rem;
 
   /* Color variables  */
   --color-black: #0a090c;
@@ -25,6 +27,7 @@ body {
   --color-primary-darker: #455787;
   --color-secondary: #ea526f;
   --color-gray: #dcdcdc;
+  --color-onyx:#3D3D3D;
 }
 
 .flex-row {
