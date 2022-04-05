@@ -1,0 +1,37 @@
+.page_heading{
+    font-size: var(--rem-2-5);
+    color: var(--color-white);
+    margin-top: var(--rem-1-5);
+}
+
+.heading_icon{
+    vertical-align:sub;
+    margin-left: var(--rem-1);
+    font-size: var(--rem-2-75);
+    animation: spin infinite 1.5s linear;
+}
+
+.empty_msg_wrapper{
+    margin-top: var(--rem-2);
+    gap:var(--rem-1-25);
+    align-items: center;
+}
+
+.empty_msg{
+    font-size: var(--rem-1-5);
+    color:var(--color-white);
+}
+
+.empty_msg_btn{
+    width: 12rem;
+}
+
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
