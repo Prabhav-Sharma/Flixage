@@ -77,7 +77,7 @@ function Navigation() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/liked" className={linkStyle}>
+              <NavLink to="/likes" className={linkStyle}>
                 <BsHeart /> Liked videos
               </NavLink>
             </li>

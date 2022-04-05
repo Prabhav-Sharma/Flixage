@@ -3,8 +3,8 @@ const userDataReducer = (state, action) => {
     case "UPDATE_HISTORY":
       return { ...state, history: action.payload.history };
 
-    case "UPDATE_LIKED":
-      return { ...state, liked: action.payload.liked };
+    case "UPDATE_LIKES":
+      return { ...state, likes: action.payload.likes };
 
     case "UPDATE_WATCH_LATER":
       return { ...state, watchlater: action.payload.watchlater };
