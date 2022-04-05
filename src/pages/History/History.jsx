@@ -35,9 +35,7 @@ function History() {
   //temporary functions till addToHistory function is added on the single video page, which at the time, doesn't exist.
   const { videos, setVideos } = useVideos();
   const loadDummyHistory = async () => {
-    const dummyVideos = videos.splice(0, 4);
-    console.log(dummyVideos);
-    await dummyVideos.forEach((video) =>
+    await videos.forEach((video) =>
       addToHistory({ video: video }, token, userDataDispatch)
     );
   };
