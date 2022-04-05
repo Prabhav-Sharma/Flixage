@@ -1,6 +1,5 @@
 import React from "react";
-import { VideoCard } from "../../components";
-import styles from "./Videos.module.css";
+import { VideoGrid } from "../../components";
 import { useDocumentTitle } from "../../hooks";
 import { useVideos } from "../../contexts/providers/VideosProvider";
 import { useEffect } from "react";
@@ -16,10 +15,8 @@ function Videos() {
   }, []);
 
   return (
-    <section className={styles.section}>
-      {videos.map((video) => (
-        <VideoCard key={video._id} video={video} />
-      ))}
+    <section>
+      <VideoGrid videos={videos} />
     </section>
   );
 }
