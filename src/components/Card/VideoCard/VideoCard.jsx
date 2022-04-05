@@ -103,11 +103,13 @@ function VideoCard({ video, type }) {
             <p>{views} views</p> • <p>{dateUploaded}</p>
           </span>
         </div>
-        <span className={`${styles.action_btn_wrapper} flex-row`}>
-          {watchLaterActionBtn}
-          {likeActionBtn}
-          {playlistActionBtn}
-        </span>
+        {token && (
+          <span className={`${styles.action_btn_wrapper} flex-row`}>
+            {watchLaterActionBtn}
+            {likeActionBtn}
+            {playlistActionBtn}
+          </span>
+        )}
       </div>
     </div>
   );
