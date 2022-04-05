@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useUserData } from "../../contexts/providers/UserDataProvider";
-import { fetchWatchLater } from "../../services";
+import { fetchWatchLater, removeAllWatchLater } from "../../services";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { VideoGrid } from "../../components";
 import styles from "./WatchLater.module.css";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineDelete } from "react-icons/ai";
 
 function WatchLater() {
   const navigate = useNavigate();
@@ -21,7 +22,17 @@ function WatchLater() {
 
   const watchlaterWrapper =
     watchlater.length !== 0 ? (
-      <VideoGrid videos={watchlater} type="WATCH_LATER" />
+      <>
+        <div className={`${styles.wrapper} flex-col`}>
+          <button
+            className={`prim-btn ${styles.clear_btn}`}
+            onClick={() => removeAllWatchLater(token, userDataDispatch)}
+          >
+            Clear All <AiOutlineDelete className={styles.btn_icon} />
+          </button>
+        </div>
+        <VideoGrid videos={watchlater} type="WATCH_LATER" />
+      </>
     ) : (
       <div className={`${styles.empty_msg_wrapper} flex-col`}>
         <h2 className={styles.empty_msg}>
@@ -38,7 +49,7 @@ function WatchLater() {
 
   return (
     <section>
-      <h1 className={`${styles.page_heading} center`}>
+      <h1 className={`${styles.page_heading}`}>
         Watch Later
         <MdOutlineWatchLater className={styles.heading_icon} />
       </h1>

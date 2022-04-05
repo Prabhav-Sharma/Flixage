@@ -74,7 +74,7 @@ function History() {
 
   return (
     <section>
-      <h1 className={`${styles.page_heading} center`}>Watch History</h1>
+      <h1 className={`${styles.page_heading}`}>Watch History</h1>
       {historyItems}
     </section>
   );
