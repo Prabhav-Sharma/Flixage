@@ -1,5 +1,5 @@
 .video_card {
-  max-width: 17rem;
+  max-width: 22rem;
   cursor: pointer;
   margin-bottom: var(--rem-1-5);
   gap: var(--rem-75);
@@ -15,7 +15,7 @@
 
 .top_wrapper {
   position: relative;
-  max-width: 16.7rem;
+  max-width: 21.7rem;
   padding: 2px;
 }
 
@@ -27,19 +27,25 @@
 }
 
 .card_img {
-  width: 16.7rem;
+  width: 21.5rem;
   object-fit: cover;
   height: 10rem;
 }
 
 .video_length {
   position: absolute;
-  bottom: 8px;
-  right: 3px;
+  bottom: 5px;
+  right:8px;
   background-color: var(--color-bg-black);
   color: var(--color-white);
   padding: 4px;
   font-size: 1rem;
+  border-radius: var(--rem-0-25);
+}
+
+.bottom_wrapper{
+  position: relative;
+  height: 100%;
 }
 
 .bottom_right_wrapper {
@@ -52,7 +58,7 @@
 .video_title {
   color: var(--color-white);
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
@@ -65,12 +71,14 @@
   justify-content: flex-start;
   gap: var(--rem-0-5);
   font-size: 0.8rem;
+  align-items: center;
 }
+
 
 .fab_btn{
   position: absolute;
-  top: var(--rem-0-25);
-  right: var(--rem-0-25);
+  top: var(--rem-0-5);
+  right: var(--rem-0-5);
   font-size: var(--rem-2);
   color:var(--color-black);
   background-color: var(--color-gray);
@@ -79,4 +87,31 @@
 
 .fab_btn:hover{
   transform: scale(110%);
+}
+
+.action_btn_wrapper{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  gap:var(--rem-0-25);
+}
+
+.action_btn{
+  background-color: #3D3D3D;
+  color: var(--color-white);
+}
+
+.action_btn_active{
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.action_btn, .action_btn_active{
+  font-size: var(--rem-2);
+  padding: var(--rem-0-25);
+  border-radius: var(--rem-0-5);
+}
+
+.action_btn:hover, .action_btn_active:hover{
+  transform: scale(107%);
 }
