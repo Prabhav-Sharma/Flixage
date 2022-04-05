@@ -1,5 +1,11 @@
 import axios from "axios";
-import { login, signup } from "./authCalls";
+import { login, signup } from "./authAPI";
+import {
+  fetchHistory,
+  addToHistory,
+  deleteFromHistory,
+  clearAllHistory,
+} from "./historyAPI";
 
 const fetchVideos = async (setterFunc) => {
   try {
@@ -13,4 +19,12 @@ const fetchVideos = async (setterFunc) => {
   }
 };
 
-export { fetchVideos, login, signup };
+export {
+  fetchVideos,
+  login,
+  signup,
+  fetchHistory,
+  addToHistory,
+  deleteFromHistory,
+  clearAllHistory,
+};

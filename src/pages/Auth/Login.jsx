@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Auth.module.css";
 import { useAuthForm, useDocumentTitle, useToggle } from "../../hooks";
 import { TextInput } from "../../components";
-import { login } from "../../services";
+import { login, axiosRequest } from "../../services";
 import { ImSpinner9 } from "react-icons/im";
 import { useAuth } from "../../contexts/providers/AuthProvider";
 import { EMAIL_REGEX } from "../../utils";
@@ -33,14 +33,24 @@ function Login() {
       return;
     }
 
-    login(email, password, setLoginToggle, authDispatch);
+    login(
+      {
+        email,
+        password,
+      },
+      setLoginToggle,
+      authDispatch
+    );
   };
 
-  const guestLoginHandler = (e) => {
+  const guestLoginHandler = async (e) => {
     e.preventDefault();
+
     login(
-      "guest@gmail.com",
-      "guest@gmail.com",
+      {
+        email: "guest@gmail.com",
+        password: "guest@gmail.com",
+      },
       setGuestLoginToggle,
       authDispatch
     );

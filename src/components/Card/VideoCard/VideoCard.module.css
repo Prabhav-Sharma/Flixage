@@ -4,7 +4,7 @@
   margin-bottom: var(--rem-1-5);
   gap: var(--rem-75);
   font-family: sans-serif;
-  max-height: 19rem;
+  height: 18rem;
   transition: all 0.2s linear;
 }
 
@@ -65,4 +65,18 @@
   justify-content: flex-start;
   gap: var(--rem-0-5);
   font-size: 0.8rem;
+}
+
+.fab_btn{
+  position: absolute;
+  top: var(--rem-0-25);
+  right: var(--rem-0-25);
+  font-size: var(--rem-2);
+  color:var(--color-black);
+  background-color: var(--color-gray);
+  border-radius: var(--rem-0-5);
+}
+
+.fab_btn:hover{
+  transform: scale(110%);
 }
