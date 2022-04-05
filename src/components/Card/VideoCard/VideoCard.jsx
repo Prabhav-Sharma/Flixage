@@ -4,16 +4,19 @@ import { AiOutlineDelete, AiOutlineClose } from "react-icons/ai";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { CgPlayListAdd, CgPlayListRemove } from "react-icons/cg";
 import { RiHeartAddLine, RiDislikeLine } from "react-icons/ri";
+import { TiThumbsDown } from "react-icons/ti";
 import {
+  addToLikes,
   addToWatchLater,
   deleteFromHistory,
   deleteFromWatchLater,
+  deleteFromLikes,
 } from "../../../services";
 import { useUserData } from "../../../contexts/providers/UserDataProvider";
 
 function VideoCard({ video, type }) {
   const {
-    state: { watchlater, liked, playlist },
+    state: { watchlater, likes, playlists },
     dispatch: userDataDispatch,
   } = useUserData();
 
@@ -46,6 +49,14 @@ function VideoCard({ video, type }) {
             onClick={() => deleteFromWatchLater(_id, token, userDataDispatch)}
           />
         );
+
+      case "LIKES":
+        return (
+          <TiThumbsDown
+            className={styles.fab_btn}
+            onClick={() => deleteFromLikes(_id, token, userDataDispatch)}
+          />
+        );
       default:
         return " ";
     }
@@ -63,19 +74,19 @@ function VideoCard({ video, type }) {
     />
   );
 
-  const likeActionBtn = liked.some((item) => item._id === _id) ? (
+  const likeActionBtn = likes.some((item) => item._id === _id) ? (
     <RiDislikeLine
       className={styles.action_btn_active}
-      onClick={() => console.log("Feature Pending")}
+      onClick={() => deleteFromLikes(_id, token, userDataDispatch)}
     />
   ) : (
     <RiHeartAddLine
       className={styles.action_btn}
-      onClick={() => console.log("Feature Pending")}
+      onClick={() => addToLikes({ video: video }, token, userDataDispatch)}
     />
   );
 
-  const playlistActionBtn = liked.some((item) => item._id === _id) ? (
+  const playlistActionBtn = playlists.some((item) => item._id === _id) ? (
     <CgPlayListRemove
       className={styles.action_btn_active}
       onClick={() => console.log("Feature Pending")}
@@ -103,7 +114,7 @@ function VideoCard({ video, type }) {
             <p>{views} views</p> • <p>{dateUploaded}</p>
           </span>
         </div>
-        {token && (
+        {token && type === "default" && (
           <span className={`${styles.action_btn_wrapper} flex-row`}>
             {watchLaterActionBtn}
             {likeActionBtn}
