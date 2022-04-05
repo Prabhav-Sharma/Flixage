@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, createContext } from "react";
 import styles from "./VideoCard.module.css";
+import { AiOutlineDelete } from "react-icons/ai";
+import { deleteFromHistory } from "../../../services";
+import { useUserData } from "../../../contexts/providers/UserDataProvider";
 
-function VideoCard({ video }) {
+function VideoCard({ video, type }) {
   const {
+    _id,
     title,
     thumbnail,
     src,
@@ -13,11 +17,28 @@ function VideoCard({ video }) {
     views,
   } = video;
 
+  const fabBtn = (type) => {
+    const { dispatch: userDataDispatch } = useUserData();
+    const token = localStorage.getItem("token");
+    switch (type) {
+      case "HISTORY":
+        return (
+          <AiOutlineDelete
+            className={styles.fab_btn}
+            onClick={() => deleteFromHistory(_id, token, userDataDispatch)}
+          />
+        );
+      default:
+        return " ";
+    }
+  };
+
   return (
     <div className={`${styles.video_card} flex-col`}>
       <div className={styles.top_wrapper}>
         <img className={styles.card_img} src={thumbnail} alt={title} />
         <p className={styles.video_length}>{playtime}</p>
+        {fabBtn(type)}
       </div>
       <div className="flex-row">
         <img className={styles.channel_icon} src={authorImg} />
