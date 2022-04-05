@@ -1,19 +1,16 @@
 import axios from "axios";
-const login = async (email, password, toggler, dispatcher) => {
+const login = async (requestData, toggler, dispatcher) => {
   toggler(true);
   try {
     const response = await axios({
       method: "POST",
       url: "/api/auth/login",
-      data: {
-        email: email,
-        password: password,
-      },
+      data: requestData,
     });
     if (response.status === 200) {
+      toggler(false);
       dispatcher({ type: "LOGIN", payload: { user: response.data.foundUser } });
       localStorage.setItem("token", response.data.encodedToken);
-      toggler(false);
       return;
     }
     toggler(false);
@@ -25,24 +22,21 @@ const login = async (email, password, toggler, dispatcher) => {
   }
 };
 
-const signup = async (fullname, email, password, toggler, dispatcher) => {
+const signup = async (requestData, toggler, dispatcher) => {
   toggler(true);
   try {
     const response = await axios({
       method: "POST",
       url: "/api/auth/signup",
-      data: {
-        fullname: fullname,
-        email: email,
-        password: password,
-      },
+      data: requestData,
     });
+
+    toggler(false);
     dispatcher({
       type: "SIGN_UP",
       payload: { user: response.data.createdUser },
     });
     localStorage.setItem("token", response.data.encodedToken);
-    toggler(false);
   } catch (e) {
     toggler(false);
     if (e.message.includes("422")) {

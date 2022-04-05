@@ -42,7 +42,7 @@ function SignUp() {
       return;
     }
 
-    signup(fullName, email, password, setToggle, authDispatch);
+    signup({ fullName, email, password }, setToggle, authDispatch);
   };
 
   useDocumentTitle("Sign Up | Flixage");
