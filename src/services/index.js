@@ -11,7 +11,15 @@ import {
   fetchWatchLater,
   addToWatchLater,
   deleteFromWatchLater,
+  removeAllWatchLater,
 } from "./watchLaterAPI";
+
+import {
+  fetchLikes,
+  addToLikes,
+  deleteFromLikes,
+  clearAllLikes,
+} from "./likesAPI";
 
 const fetchVideos = async (setterFunc) => {
   try {
@@ -36,4 +44,9 @@ export {
   fetchWatchLater,
   addToWatchLater,
   deleteFromWatchLater,
+  fetchLikes,
+  addToLikes,
+  deleteFromLikes,
+  clearAllLikes,
+  removeAllWatchLater,
 };

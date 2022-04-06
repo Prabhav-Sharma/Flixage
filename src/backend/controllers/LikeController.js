@@ -85,3 +85,28 @@ export const removeItemFromLikedVideos = function (schema, request) {
     { errors: ["The user you request does not exist. Not Found error."] }
   );
 };
+
+export const clearLikesHandler = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    this.db.users.update({ likes: [] });
+    return new Response(200, {}, { likes: [] });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};

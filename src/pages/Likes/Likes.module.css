@@ -1,0 +1,37 @@
+.page_heading{
+    font-size: var(--rem-2);
+    margin: var(--rem-1-5) 0 0 var(--rem-0-75);
+    color: var(--color-white);
+    width: 98vw;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+.explore_btn{
+    width: 12rem;
+}
+
+.explore_icon, .btn_icon{
+    font-size: var(--rem-1-25);
+    vertical-align: sub;
+}
+
+.empty_msg{
+    font-size: var(--rem-1-5);
+    color:var(--color-white);
+}
+
+.empty_wrapper{
+    margin-top: var(--rem-2);
+    align-items: center;
+    gap: var(--rem-1-5);
+}
+
+.wrapper{
+    gap:var(--rem-1-75);
+}
+
+.clear_btn{
+    align-self: flex-end;
+    width: 15rem;
+    margin: var(--rem-1);
+}

@@ -1,61 +1,64 @@
 import React, { useEffect } from "react";
 import { useUserData } from "../../contexts/providers/UserDataProvider";
-import { fetchWatchLater, removeAllWatchLater } from "../../services";
-import { MdOutlineWatchLater } from "react-icons/md";
+import styles from "./Likes.module.css";
 import { VideoGrid } from "../../components";
-import styles from "./WatchLater.module.css";
+import { BsFillBookmarkHeartFill } from "react-icons/bs";
+import { MdOutlineExplore } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { fetchLikes, clearAllLikes } from "../../services";
+import { useDocumentTitle } from "../../hooks";
 import { AiOutlineDelete } from "react-icons/ai";
 
-function WatchLater() {
-  const navigate = useNavigate();
+function Likes() {
   const {
-    state: { watchlater },
+    state: { likes },
     dispatch: userDataDispatch,
   } = useUserData();
 
   const token = localStorage.getItem("token");
 
+  useDocumentTitle("Liked | Flixage");
+
   useEffect(() => {
-    fetchWatchLater(token, userDataDispatch);
+    fetchLikes(token, userDataDispatch);
   }, []);
 
-  const watchlaterWrapper =
-    watchlater.length !== 0 ? (
+  const navigate = useNavigate();
+
+  const likedItems =
+    likes.length !== 0 ? (
       <>
         <div className={`${styles.wrapper} flex-col`}>
           <button
             className={`prim-btn ${styles.clear_btn}`}
-            onClick={() => removeAllWatchLater(token, userDataDispatch)}
+            onClick={() => clearAllLikes(token, userDataDispatch)}
           >
             Clear All <AiOutlineDelete className={styles.btn_icon} />
           </button>
         </div>
-        <VideoGrid videos={watchlater} type="WATCH_LATER" />
+        <VideoGrid videos={likes} type="LIKES" />
       </>
     ) : (
-      <div className={`${styles.empty_msg_wrapper} flex-col`}>
+      <div className={`${styles.empty_wrapper} flex-col`}>
         <h2 className={styles.empty_msg}>
-          Don't have time? Add videos to watch later and come back anytime.
+          C'mon, you gotta like something? Let's give it another shot!
         </h2>
         <button
-          className={`${styles.empty_msg_btn} prim-btn`}
+          className={`${styles.explore_btn} prim-btn`}
           onClick={() => navigate("/videos")}
         >
-          Get Started
+          Explore <MdOutlineExplore className={styles.explore_icon} />
         </button>
       </div>
     );
-
   return (
     <section>
       <h1 className={`${styles.page_heading}`}>
-        Watch Later
-        <MdOutlineWatchLater className={styles.heading_icon} />
+        <BsFillBookmarkHeartFill /> Liked Videos{" "}
       </h1>
-      {watchlaterWrapper}
+      {likedItems}
     </section>
   );
 }
 
-export default WatchLater;
+export default Likes;

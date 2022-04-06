@@ -3,12 +3,20 @@
     margin-top: var(--rem-1-5);
     font-size: var(--rem-2);
 }
+
+.page_heading{
+    font-size: var(--rem-2);
+    margin: var(--rem-1-5) 0 0 var(--rem-0-75);
+    color: var(--color-white);
+    width: 96vw;
+    border-bottom: 2px solid var(--color-secondary);
+}
 .wrapper{
     gap:var(--rem-1-75);
 }
 
 .clear_btn{
-    align-self: flex-start;
+    align-self: flex-end;
     width: 15rem;
     margin: var(--rem-1);
 }

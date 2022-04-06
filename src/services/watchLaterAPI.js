@@ -49,4 +49,25 @@ const deleteFromWatchLater = async (id, token, dispatcher) => {
   }
 };
 
-export { fetchWatchLater, addToWatchLater, deleteFromWatchLater };
+const removeAllWatchLater = async (token, dispatcher) => {
+  try {
+    const response = await axios({
+      method: "DELETE",
+      url: "/api/user/watchlater/all",
+      headers: { authorization: token },
+    });
+    dispatcher({
+      type: "UPDATE_WATCH_LATER",
+      payload: { watchlater: response.data.watchlater },
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export {
+  fetchWatchLater,
+  addToWatchLater,
+  deleteFromWatchLater,
+  removeAllWatchLater,
+};

@@ -13,7 +13,7 @@
 .nav_heading {
   font-family: "Nosifer", cursive;
   color: var(--color-white);
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .nav_heading:hover,
@@ -52,7 +52,7 @@
   max-width: 20rem;
   flex-grow: 1;
   background-image: url("https://res.cloudinary.com/carsmart/image/upload/v1647404723/icons/search_i9fe3a.png");
-  background-position: var(--rem-0-75) var(--rem-0-75);
+  background-position: var(--rem-0-5) var(--rem-0-5);
   background-repeat: no-repeat;
   background-size: 15px;
   padding-left: var(--rem-1-75);

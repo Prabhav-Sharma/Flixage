@@ -8,7 +8,7 @@ const UserDataProvider = ({ children }) => {
     history: [],
     watchlater: [],
     playlists: [],
-    liked: [],
+    likes: [],
   });
 
   return (
