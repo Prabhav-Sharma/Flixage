@@ -10,7 +10,7 @@
     vertical-align:sub;
     margin-left: var(--rem-1);
     font-size: var(--rem-2-5);
-    animation: spin infinite 1.5s linear;
+    animation: spin infinite 2.8s linear;
 }
 
 .empty_msg_wrapper{
