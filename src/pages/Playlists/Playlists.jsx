@@ -13,6 +13,7 @@ import { BsMusicPlayer } from "react-icons/bs";
 import { TextInput, HorizontalVideoCard } from "../../components";
 import { GoTrashcan } from "react-icons/go";
 import { useAuth } from "../../contexts/providers/AuthProvider";
+import { toast } from "react-toastify";
 
 function Playlists() {
   const {
@@ -40,12 +41,16 @@ function Playlists() {
   const addPlaylistHandler = async () => {
     const title = newPlaylistTitle.trim();
     if (title.length === 0) {
-      alert("You must name your playlist");
+      toast.info("You must name your playlist");
       return;
     }
 
-    if (playlists.some((playlist) => playlist.title === title)) {
-      alert(`Playlist with the name '${title}' already exists!`);
+    if (
+      playlists.some(
+        (playlist) => playlist.title.toLowerCase() === title.toLowerCase()
+      )
+    ) {
+      toast.info(`Playlist with the name '${title}' already exists!`);
       return;
     }
 

@@ -8,6 +8,7 @@ import { useToggle } from "../../hooks";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BiLogOut, BiLogIn } from "react-icons/bi";
 import { useAuth } from "../../contexts/providers/AuthProvider";
+import { toast } from "react-toastify";
 
 function Navigation() {
   const { toggle: visible, setToggle: setVisible } = useToggle(false);
@@ -48,6 +49,7 @@ function Navigation() {
             src={
               "https://res.cloudinary.com/carsmart/image/upload/v1648707066/Flixage/icons/alien_2_wvzwe6.png"
             }
+            onClick={() => toast.info("Feature Pending")}
           />
         </a>
       </nav>
