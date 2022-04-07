@@ -27,7 +27,7 @@ function SignUp() {
     e.preventDefault();
 
     if (fullName.length === 0 || password.length === 0) {
-      toast.info("Fields can't be empty"); //Need to change to custom alert component
+      toast.info("Fields can't be empty");
       return;
     }
 
@@ -40,7 +40,7 @@ function SignUp() {
       toast.info("Passwords don't match");
       return;
     }
-    //Will add  when Terms of service page is added
+    //Will add when Terms of service page is added
     // if (!checkbox) {
     //   alert("Must agree to the terms of service in order to use the site");
     //   return;
@@ -48,7 +48,7 @@ function SignUp() {
 
     await signup({ fullName, email, password }, setToggle, authDispatch);
     const pathName = location?.state?.from?.pathname;
-    pathName ? navigate(pathName) : navigate("/");
+    navigate(pathName ? pathName : "/");
   };
 
   useDocumentTitle("Sign Up | Flixage");

@@ -28,7 +28,7 @@ function Login() {
     e.preventDefault();
 
     if (password.length === 0) {
-      toast.info("Fields can't be empty"); //Need to change to custom alert component
+      toast.info("Fields can't be empty");
       return;
     }
 
@@ -54,7 +54,7 @@ function Login() {
       authDispatch
     );
     const pathName = location?.state?.from?.pathname;
-    pathName ? navigate(pathName) : navigate("/");
+    navigate(pathName ? pathName : "/");
   };
 
   useDocumentTitle("Login | Flixage");
