@@ -1,0 +1,72 @@
+.modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left:0;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_content{
+    display: flex;
+    flex-direction:column ;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 20rem;
+    background-color: var(--color-white);
+    min-height: 12rem;
+    border-radius: var(--rem-0-5);
+    outline: solid 3px var(--color-primary-darker);
+    padding: var(--rem-1-5);
+    font-size: var(--rem-1-25);
+    gap:var(--rem-0-75);
+    position: relative;
+}
+
+.modal_header{
+    align-self: center;
+}
+
+.input_wrapper{
+    align-items: baseline;
+    gap:var(--rem-0-5);
+    width:100%;
+    justify-content: center;
+}
+
+.input_wrapper>*>legend{
+    color:var(--color-black);
+}
+
+.add_icon{
+    font-size: var(--rem-2);
+    color:var(--color-black);
+    vertical-align: sub;
+    padding: var(--rem-0-25);
+}
+
+.playlist_item{
+    color: var(--color-primary);
+    margin-top: var(--rem-0-5);
+}
+
+.playlist_item>*:hover{
+    cursor: pointer;
+}
+
+.close_btn{
+    position: absolute;
+    top:var(--rem-0-5);
+    font-size: var(--rem-2);
+    right: var(--rem-0-5);
+    transition: all 0.2s linear ;
+}
+
+.close_btn:hover, .add_icon:hover{
+    cursor: pointer;
+    color: var(--color-primary-darker);
+    transform: scale(105%);
+}
