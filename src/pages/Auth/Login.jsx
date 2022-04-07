@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
 import { useAuthForm, useDocumentTitle, useToggle } from "../../hooks";
 import { TextInput } from "../../components";
-import { login, axiosRequest } from "../../services";
+import { login } from "../../services";
 import { ImSpinner9 } from "react-icons/im";
 import { useAuth } from "../../contexts/providers/AuthProvider";
 import { EMAIL_REGEX } from "../../utils";
+import { toast } from "react-toastify";
 
 function Login() {
   const { authFormState: formState, authFormDispatch: formDispatch } =
@@ -14,39 +15,37 @@ function Login() {
 
   const { authDispatch } = useAuth();
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const { toggle: loginToggle, setToggle: setLoginToggle } = useToggle(false);
   const { toggle: guestLoginToggle, setToggle: setGuestLoginToggle } =
     useToggle(false);
 
   const { email, password } = formState;
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
 
     if (password.length === 0) {
-      alert("Fields can't be empty"); //Need to change to custom alert component
+      toast.info("Fields can't be empty");
       return;
     }
 
     if (!EMAIL_REGEX.test(email)) {
-      alert("Invalid email address");
+      toast.info("Invalid email address");
       return;
     }
 
-    login(
-      {
-        email,
-        password,
-      },
-      setLoginToggle,
-      authDispatch
-    );
+    await login({ email, password }, setLoginToggle, authDispatch);
+    const pathName = location?.state?.from?.pathname;
+    pathName ? navigate(pathName) : navigate("/");
   };
 
   const guestLoginHandler = async (e) => {
     e.preventDefault();
 
-    login(
+    await login(
       {
         email: "guest@gmail.com",
         password: "guest@gmail.com",
@@ -54,6 +53,8 @@ function Login() {
       setGuestLoginToggle,
       authDispatch
     );
+    const pathName = location?.state?.from?.pathname;
+    navigate(pathName ? pathName : "/");
   };
 
   useDocumentTitle("Login | Flixage");
@@ -86,6 +87,7 @@ function Login() {
           }
           autoComplete={"current-password"}
         />
+        {/* Only for illustration, functioning will be added later! */}
         <span className={`${styles.form_span} flex-row`}>
           <label>
             <input type="checkbox" />
@@ -103,7 +105,11 @@ function Login() {
             "Guest Login"
           )}
         </button>
-        <Link to="/signup" className={styles.link}>
+        <Link
+          to="/signup"
+          state={{ from: location?.state?.from }}
+          className={styles.link}
+        >
           Create New Account ❯
         </Link>
       </form>

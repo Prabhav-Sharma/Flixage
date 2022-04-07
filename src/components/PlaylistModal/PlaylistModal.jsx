@@ -6,6 +6,7 @@ import { addPlaylist, addToPlaylist, removeFromPlaylist } from "../../services";
 import { AiOutlineFileAdd, AiOutlineCloseCircle } from "react-icons/ai";
 import { TextInput } from "../index";
 import { useAuth } from "../../contexts/providers/AuthProvider";
+import { toast } from "react-toastify";
 
 function PlaylistModal({ show, video }) {
   const { modalToggle, setModalToggle } = show;
@@ -63,12 +64,12 @@ function PlaylistModal({ show, video }) {
     if (
       playlists.some((p) => p.title.toLowerCase() === newTitle.toLowerCase())
     ) {
-      alert(`Playlist with the name '${newTitle}' already exists`);
+      toast.info(`Playlist with the name '${newTitle}' already exists`);
       return;
     }
 
     if (newTitle.length === 0) {
-      alert("Playlist title can't be empty!");
+      toast.info("Playlist title can't be empty!");
       return;
     }
 

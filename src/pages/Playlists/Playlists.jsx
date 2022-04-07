@@ -29,8 +29,6 @@ function Playlists() {
     videos: [],
   });
 
-  console.log(currentPlaylist);
-
   useEffect(() => {
     fetchAllPlaylists(token, userDataDispatch);
   }, []);
@@ -65,6 +63,19 @@ function Playlists() {
     }
   };
 
+  const removeFromPlaylistHandler = async (videoID) => {
+    await removeFromPlaylist(
+      currentPlaylist._id,
+      videoID,
+      token,
+      userDataDispatch
+    );
+    const newPlaylistItems = currentPlaylist.videos.filter(
+      (item) => item._id !== videoID
+    );
+    setCurrentPlaylist({ ...currentPlaylist, videos: newPlaylistItems });
+  };
+
   return (
     <>
       <h1 className={`${styles.page_heading}`}>
@@ -81,14 +92,7 @@ function Playlists() {
               <HorizontalVideoCard
                 key={video._id}
                 video={video}
-                onClick={() =>
-                  removeFromPlaylist(
-                    currentPlaylist._id,
-                    video._id,
-                    token,
-                    setCurrentPlaylist
-                  )
-                }
+                onClick={() => removeFromPlaylistHandler(video._id)}
               />
             ))
           ) : (

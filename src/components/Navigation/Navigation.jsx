@@ -5,10 +5,18 @@ import { MdOutlineWatchLater, MdSlowMotionVideo } from "react-icons/md";
 import { FaHome, FaHistory } from "react-icons/fa";
 import { BsPlayBtn, BsHeart } from "react-icons/bs";
 import { useToggle } from "../../hooks";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { BiLogOut, BiLogIn } from "react-icons/bi";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function Navigation() {
   const { toggle: visible, setToggle: setVisible } = useToggle(false);
+  const navigate = useNavigate();
+
+  const {
+    authState: { isAuthenticated },
+    authDispatch,
+  } = useAuth();
 
   const linkStyle = ({ isActive }) =>
     isActive
@@ -25,7 +33,7 @@ function Navigation() {
           >
             <GiHamburgerMenu />
           </span>
-          <h1 className={styles.nav_heading}>
+          <h1 className={styles.nav_heading} onClick={() => navigate("/")}>
             Flix<span className={styles.red}>age</span>
           </h1>
         </div>
@@ -81,6 +89,23 @@ function Navigation() {
                 <BsHeart /> Liked videos
               </NavLink>
             </li>
+            {isAuthenticated ? (
+              <li>
+                <NavLink
+                  to="/login"
+                  onClick={() => authDispatch({ type: "LOGOUT" })}
+                  className={linkStyle}
+                >
+                  <BiLogOut /> Logout
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/login" className={linkStyle}>
+                  <BiLogIn /> Login
+                </NavLink>
+              </li>
+            )}
           </ul>
         </span>
       </aside>

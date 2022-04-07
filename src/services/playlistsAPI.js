@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
 //calls for operations on playlists
 const fetchAllPlaylists = async (token, dispatcher) => {
   try {
@@ -30,7 +30,9 @@ const addPlaylist = async (requestData, token, dispatcher) => {
       type: "UPDATE_PLAYLISTS",
       payload: { playlists: response.data.playlists },
     });
+    toast.success("Playlist Added!");
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -46,6 +48,7 @@ const removePlaylist = async (id, token, dispatcher) => {
       type: "UPDATE_PLAYLISTS",
       payload: { playlists: response.data.playlists },
     });
+    toast.success("Playlist Removed!");
   } catch (e) {
     console.log(e);
   }
@@ -67,6 +70,7 @@ const fetchPlaylist = async (playlistId, token, dispatcher) => {
       payload: { playlist: response.data.playlist },
     });
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -85,7 +89,9 @@ const addToPlaylist = async (playlistId, requestData, token, dispatcher) => {
       type: "UPDATE_PLAYLIST",
       payload: { playlist: response.data.playlist },
     });
+    toast.success("Video added to playlist!");
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -103,8 +109,10 @@ const removeFromPlaylist = async (playlistId, videoId, token, dispatcher) => {
       type: "UPDATE_PLAYLIST",
       payload: { playlist: response.data.playlist },
     });
+    toast.success("Video removed from playlist!");
   } catch (e) {
     console.log(e);
+    toast.error("Uh oh, something broke 🥺");
   }
 };
 
