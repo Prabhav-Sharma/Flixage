@@ -21,6 +21,15 @@ import {
   clearAllLikes,
 } from "./likesAPI";
 
+import {
+  fetchAllPlaylists,
+  addPlaylist,
+  removePlaylist,
+  fetchPlaylist,
+  addToPlaylist,
+  removeFromPlaylist,
+} from "./playlistsAPI";
+
 const fetchVideos = async (setterFunc) => {
   try {
     const response = await axios({
@@ -49,4 +58,10 @@ export {
   deleteFromLikes,
   clearAllLikes,
   removeAllWatchLater,
+  fetchAllPlaylists,
+  addPlaylist,
+  removePlaylist,
+  fetchPlaylist,
+  addToPlaylist,
+  removeFromPlaylist,
 };

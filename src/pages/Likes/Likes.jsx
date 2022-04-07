@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchLikes, clearAllLikes } from "../../services";
 import { useDocumentTitle } from "../../hooks";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function Likes() {
   const {
@@ -15,7 +16,9 @@ function Likes() {
     dispatch: userDataDispatch,
   } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
 
   useDocumentTitle("Liked | Flixage");
 

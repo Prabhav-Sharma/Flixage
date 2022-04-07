@@ -14,6 +14,7 @@ import { MdOutlineExplore } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { VideoGrid } from "../../components";
 import styles from "./History.module.css";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 //temp import
 import { useVideos } from "../../contexts/providers/VideosProvider";
@@ -24,7 +25,9 @@ function History() {
     dispatch: userDataDispatch,
   } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
   useDocumentTitle("History | Flixage");
 
   useEffect(() => {

@@ -1,26 +1,23 @@
 import React from "react";
 import styles from "./VideoCard.module.css";
 import { AiOutlineDelete, AiOutlineClose } from "react-icons/ai";
-import { MdOutlineWatchLater } from "react-icons/md";
-import { CgPlayListAdd, CgPlayListRemove } from "react-icons/cg";
-import { RiHeartAddLine, RiDislikeLine } from "react-icons/ri";
 import { TiThumbsDown } from "react-icons/ti";
 import {
-  addToLikes,
-  addToWatchLater,
   deleteFromHistory,
   deleteFromWatchLater,
   deleteFromLikes,
 } from "../../../services";
 import { useUserData } from "../../../contexts/providers/UserDataProvider";
+import { WatchLaterButton, LikesButton, PlaylistButton } from "../../index";
+import { useAuth } from "../../../contexts/providers/AuthProvider";
 
 function VideoCard({ video, type }) {
-  const {
-    state: { watchlater, likes, playlists },
-    dispatch: userDataDispatch,
-  } = useUserData();
+  const { dispatch: userDataDispatch } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
+
   const {
     _id,
     title,
@@ -33,7 +30,7 @@ function VideoCard({ video, type }) {
     views,
   } = video;
 
-  const fabBtn = (type) => {
+  const FABButton = ({ type }) => {
     switch (type) {
       case "HISTORY":
         return (
@@ -62,49 +59,14 @@ function VideoCard({ video, type }) {
     }
   };
 
-  const watchLaterActionBtn = watchlater.some((item) => item._id === _id) ? (
-    <MdOutlineWatchLater
-      className={styles.action_btn_active}
-      onClick={() => deleteFromWatchLater(_id, token, userDataDispatch)}
-    />
-  ) : (
-    <MdOutlineWatchLater
-      className={styles.action_btn}
-      onClick={() => addToWatchLater({ video: video }, token, userDataDispatch)}
-    />
-  );
-
-  const likeActionBtn = likes.some((item) => item._id === _id) ? (
-    <RiDislikeLine
-      className={styles.action_btn_active}
-      onClick={() => deleteFromLikes(_id, token, userDataDispatch)}
-    />
-  ) : (
-    <RiHeartAddLine
-      className={styles.action_btn}
-      onClick={() => addToLikes({ video: video }, token, userDataDispatch)}
-    />
-  );
-
-  const playlistActionBtn = playlists.some((item) => item._id === _id) ? (
-    <CgPlayListRemove
-      className={styles.action_btn_active}
-      onClick={() => console.log("Feature Pending")}
-    />
-  ) : (
-    <CgPlayListAdd
-      className={styles.action_btn}
-      onClick={() => console.log("Feature Pending")}
-    />
-  );
-
   return (
     <div className={`${styles.video_card} flex-col`}>
       <div className={styles.top_wrapper}>
         <img className={styles.card_img} src={thumbnail} alt={title} />
         <p className={styles.video_length}>{playtime}</p>
-        {fabBtn(type)}
+        {<FABButton type={type} />}
       </div>
+
       <div className={`${styles.bottom_wrapper} flex-row`}>
         <img className={styles.channel_icon} src={authorImg} />
         <div className={`${styles.bottom_right_wrapper} flex-col`}>
@@ -114,11 +76,12 @@ function VideoCard({ video, type }) {
             <p>{views} views</p> • <p>{dateUploaded}</p>
           </span>
         </div>
+
         {token && type === "default" && (
           <span className={`${styles.action_btn_wrapper} flex-row`}>
-            {watchLaterActionBtn}
-            {likeActionBtn}
-            {playlistActionBtn}
+            {<WatchLaterButton video={video} />}
+            {<LikesButton video={video} />}
+            {<PlaylistButton video={video} />}
           </span>
         )}
       </div>

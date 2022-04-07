@@ -7,7 +7,6 @@ import {
   History,
   Login,
   SignUp,
-  Playlist,
   Playlists,
   WatchLater,
   Video,
@@ -30,7 +29,6 @@ function Router() {
         <Route path="/history" element={<History />} />
         <Route path="/likes" element={<Likes />} />
         <Route path="/watchlater" element={<WatchLater />} />
-        <Route path="/playlist/:playlistID" element={<Playlist />} />
       </Route>
       <Route path="/" element={<Home />} />
       <Route path="/mockman" element={<MockAPI />} />

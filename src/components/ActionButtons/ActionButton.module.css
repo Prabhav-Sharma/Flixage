@@ -1,0 +1,34 @@
+.action_btn_wrapper{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    gap:var(--rem-0-25);
+  }
+  
+  .action_btn{
+    background-color: #3D3D3D;
+    color: var(--color-white);
+  }
+  
+  .action_btn_active{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+  .action_btn, .action_btn_active{
+    padding: var(--rem-0-25);
+    border-radius: var(--rem-0-5);
+    border: none;
+    display: flex;
+    align-items: center;
+    gap:var(--rem-0-25);
+  }
+  
+  .action_btn:hover, .action_btn_active:hover{
+    transform: scale(102%);
+    cursor: pointer;
+  }
+
+  .action_icon{
+    font-size: var(--rem-1-75);
+  }

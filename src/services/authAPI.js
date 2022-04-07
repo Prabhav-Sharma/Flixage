@@ -9,7 +9,13 @@ const login = async (requestData, toggler, dispatcher) => {
     });
     if (response.status === 200) {
       toggler(false);
-      dispatcher({ type: "LOGIN", payload: { user: response.data.foundUser } });
+      dispatcher({
+        type: "LOGIN",
+        payload: {
+          user: response.data.foundUser,
+          token: response.data.encodedToken,
+        },
+      });
       localStorage.setItem("token", response.data.encodedToken);
       return;
     }
@@ -34,7 +40,10 @@ const signup = async (requestData, toggler, dispatcher) => {
     toggler(false);
     dispatcher({
       type: "SIGN_UP",
-      payload: { user: response.data.createdUser },
+      payload: {
+        user: response.data.createdUser,
+        token: response.data.encodedToken,
+      },
     });
     localStorage.setItem("token", response.data.encodedToken);
   } catch (e) {
