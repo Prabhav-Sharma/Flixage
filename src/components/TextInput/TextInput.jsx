@@ -10,6 +10,7 @@ function TextInput({
   placeholder,
   type,
   autoComplete,
+  maxLength = Infinity,
 }) {
   const { toggle: visible, setToggle: setVisible } = useToggle(false);
 
@@ -46,6 +47,7 @@ function TextInput({
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        maxLength={maxLength}
       />
     );
 
