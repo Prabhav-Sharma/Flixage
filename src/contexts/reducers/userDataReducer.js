@@ -12,6 +12,12 @@ const userDataReducer = (state, action) => {
     case "UPDATE_PLAYLISTS":
       return { ...state, playlists: action.payload.playlists };
 
+    case "UPDATE_PLAYLIST":
+      const newPlaylist = action.payload.playlist;
+      const newPlaylists = state.playlists.map((playlist) =>
+        playlist._id === newPlaylist._id ? newPlaylist : playlist
+      );
+      return { ...state, playlists: newPlaylists };
     default:
       return state;
   }
