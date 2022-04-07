@@ -107,7 +107,7 @@
 }
 
 .action_btn, .action_btn_active{
-  font-size: var(--rem-2);
+  font-size: var(--rem-1-75);
   padding: var(--rem-0-25);
   border-radius: var(--rem-0-5);
 }
