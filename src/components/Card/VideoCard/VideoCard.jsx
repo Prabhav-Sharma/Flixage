@@ -73,7 +73,7 @@ function VideoCard({ video, type }) {
           <h1 className={styles.video_title}>{title}</h1>
           <h3>{author}</h3>
           <span className={`flex-row`}>
-            <p>{views} views</p> • <p>{dateUploaded}</p>
+            <p>{views.toLocaleString()} views</p> • <p>{dateUploaded}</p>
           </span>
         </div>
 
