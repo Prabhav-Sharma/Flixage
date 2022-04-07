@@ -12,7 +12,7 @@ function PlaylistButton({ video, text = false }) {
   const { toggle: modalToggle, setToggle: setModalToggle } = useToggle(false);
 
   const videoInPlaylists = playlists.some((playlist) =>
-    playlist.videos.some((v) => v._id === video._id)
+    playlist.videos.some((item) => item._id === video._id)
   );
 
   return (
