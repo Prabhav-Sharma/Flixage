@@ -18,7 +18,7 @@ const login = async (requestData, toggler, dispatcher) => {
     });
     console.log(response);
     localStorage.setItem("token", response.data.encodedToken);
-    toast.success(`Welcome back, ${response.data.foundUser.firstName}`);
+    toast.success(`Welcome back, ${response.data.foundUser.userName}`);
   } catch (e) {
     toggler(false);
     toast.error("Wrong Credentials");
@@ -44,8 +44,9 @@ const signup = async (requestData, toggler, dispatcher) => {
       },
     });
     localStorage.setItem("token", response.data.encodedToken);
+    console.log(response.data.createdUser.userName);
     toast.success(
-      `Ahoy, welcome aboard, ${response.data.createdUser.fullName} `
+      `Ahoy, welcome aboard, ${response.data.createdUser.userName} `
     );
   } catch (e) {
     toggler(false);

@@ -46,7 +46,11 @@ function SignUp() {
     //   return;
     // }
 
-    await signup({ fullName, email, password }, setToggle, authDispatch);
+    await signup(
+      { userName: fullName, email, password },
+      setToggle,
+      authDispatch
+    );
     const pathName = location?.state?.from?.pathname;
     navigate(pathName ? pathName : "/");
   };
