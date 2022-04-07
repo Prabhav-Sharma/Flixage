@@ -28,6 +28,7 @@ function History() {
   const {
     authState: { token },
   } = useAuth();
+
   useDocumentTitle("History | Flixage");
 
   useEffect(() => {

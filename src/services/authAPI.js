@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 const login = async (requestData, toggler, dispatcher) => {
   toggler(true);
   try {
@@ -7,23 +8,20 @@ const login = async (requestData, toggler, dispatcher) => {
       url: "/api/auth/login",
       data: requestData,
     });
-    if (response.status === 200) {
-      toggler(false);
-      dispatcher({
-        type: "LOGIN",
-        payload: {
-          user: response.data.foundUser,
-          token: response.data.encodedToken,
-        },
-      });
-      localStorage.setItem("token", response.data.encodedToken);
-      return;
-    }
     toggler(false);
-    alert("Wrong Credentials");
+    dispatcher({
+      type: "LOGIN",
+      payload: {
+        user: response.data.foundUser,
+        token: response.data.encodedToken,
+      },
+    });
+    console.log(response);
+    localStorage.setItem("token", response.data.encodedToken);
+    toast.success(`Welcome back, ${response.data.foundUser.firstName}`);
   } catch (e) {
     toggler(false);
-    alert("Wrong Credentials");
+    toast.error("Wrong Credentials");
     console.log(e);
   }
 };
@@ -46,11 +44,16 @@ const signup = async (requestData, toggler, dispatcher) => {
       },
     });
     localStorage.setItem("token", response.data.encodedToken);
+    toast.success(
+      `Ahoy, welcome aboard, ${response.data.createdUser.fullName} `
+    );
   } catch (e) {
     toggler(false);
     if (e.message.includes("422")) {
-      alert("Account already exists");
+      toast.error("Account Already exists");
+      return;
     }
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };

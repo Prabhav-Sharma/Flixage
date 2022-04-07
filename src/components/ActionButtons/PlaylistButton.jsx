@@ -27,7 +27,6 @@ function PlaylistButton({ video, text = false }) {
         <CgPlayListAdd className={styles.action_icon} />
         {text && "Add to Playlist"}
       </button>
-      )
     </>
   );
 }

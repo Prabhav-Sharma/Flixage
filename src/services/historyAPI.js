@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+
 const fetchHistory = async (token, dispatcher) => {
   try {
     const response = await axios({
@@ -13,6 +15,7 @@ const fetchHistory = async (token, dispatcher) => {
       payload: { history: response.data.history },
     });
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -30,6 +33,7 @@ const addToHistory = async (requestData, token, dispatcher) => {
       payload: { history: response.data.history },
     });
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -45,7 +49,10 @@ const deleteFromHistory = async (id, token, dispatcher) => {
       type: "UPDATE_HISTORY",
       payload: { history: response.data.history },
     });
+
+    toast.success("Huh, what video? it's gone...");
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -61,7 +68,9 @@ const clearAllHistory = async (token, dispatcher) => {
       type: "UPDATE_HISTORY",
       payload: { history: response.data.history },
     });
+    toast.success("It's like nothing ever happened between us 🥺");
   } catch (e) {
+    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };

@@ -2,10 +2,16 @@ import React from "react";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDocumentTitle } from "../../hooks";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function Home() {
   useDocumentTitle("Flixage");
   const navigate = useNavigate();
+
+  const {
+    authState: { isAuthenticated },
+  } = useAuth();
+
   return (
     <section className={`${styles.section} flex-col`}>
       <div className={`${styles.container_div} flex-col`}>
@@ -14,9 +20,18 @@ function Home() {
           <button className="prim-btn" onClick={() => navigate("/videos")}>
             Watch Now
           </button>
-          <button className="prim-acc-btn" onClick={() => navigate("/login")}>
-            Login
-          </button>
+          {isAuthenticated ? (
+            <button
+              className="prim-acc-btn"
+              onClick={() => navigate("/playlists")}
+            >
+              Playlists
+            </button>
+          ) : (
+            <button className="prim-acc-btn" onClick={() => navigate("/login")}>
+              Login
+            </button>
+          )}
         </div>
       </div>
     </section>

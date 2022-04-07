@@ -79,9 +79,9 @@ function VideoCard({ video, type }) {
 
         {token && type === "default" && (
           <span className={`${styles.action_btn_wrapper} flex-row`}>
-            {<WatchLaterButton video={video} />}
-            {<LikesButton video={video} />}
-            {<PlaylistButton video={video} />}
+            <WatchLaterButton video={video} />
+            <LikesButton video={video} />
+            <PlaylistButton video={video} />
           </span>
         )}
       </div>

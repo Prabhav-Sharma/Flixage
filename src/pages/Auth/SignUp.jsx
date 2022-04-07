@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./Auth.module.css";
 import { TextInput } from "../../components";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuthForm, useDocumentTitle } from "../../hooks";
 import { signup } from "../../services";
 import { ImSpinner9 } from "react-icons/im";
 import { useToggle } from "../../hooks";
 import { useAuth } from "../../contexts/providers/AuthProvider";
 import { EMAIL_REGEX } from "../../utils";
+import { toast } from "react-toastify";
 
 function SignUp() {
   const { authFormState: formState, authFormDispatch: formDispatch } =
@@ -19,30 +20,35 @@ function SignUp() {
 
   const { authDispatch } = useAuth();
 
-  const signUpHandler = (e) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const signUpHandler = async (e) => {
     e.preventDefault();
 
     if (fullName.length === 0 || password.length === 0) {
-      alert("Fields can't be empty"); //Need to change to custom alert component
+      toast.info("Fields can't be empty"); //Need to change to custom alert component
       return;
     }
 
     if (!EMAIL_REGEX.test(email)) {
-      alert("Invalid email address");
+      toast.info("Invalid email address");
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
+      toast.info("Passwords don't match");
       return;
     }
+    //Will add  when Terms of service page is added
+    // if (!checkbox) {
+    //   alert("Must agree to the terms of service in order to use the site");
+    //   return;
+    // }
 
-    if (!checkbox) {
-      alert("Must agree to the terms of service in order to use the site");
-      return;
-    }
-
-    signup({ fullName, email, password }, setToggle, authDispatch);
+    await signup({ fullName, email, password }, setToggle, authDispatch);
+    const pathName = location?.state?.from?.pathname;
+    pathName ? navigate(pathName) : navigate("/");
   };
 
   useDocumentTitle("Sign Up | Flixage");
@@ -102,6 +108,8 @@ function SignUp() {
           }
           autoComplete="new-password"
         />
+        {/* Only for display, will make it functioning when Terms of service page
+        is added */}
         <label>
           <input
             type="checkbox"
