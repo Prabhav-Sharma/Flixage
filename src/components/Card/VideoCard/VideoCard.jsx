@@ -9,11 +9,15 @@ import {
 } from "../../../services";
 import { useUserData } from "../../../contexts/providers/UserDataProvider";
 import { WatchLaterButton, LikesButton, PlaylistButton } from "../../index";
+import { useAuth } from "../../../contexts/providers/AuthProvider";
 
 function VideoCard({ video, type }) {
   const { dispatch: userDataDispatch } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
+
   const {
     _id,
     title,

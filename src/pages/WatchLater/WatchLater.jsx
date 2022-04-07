@@ -6,6 +6,7 @@ import { VideoGrid } from "../../components";
 import styles from "./WatchLater.module.css";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function WatchLater() {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ function WatchLater() {
     dispatch: userDataDispatch,
   } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
 
   useEffect(() => {
     fetchWatchLater(token, userDataDispatch);

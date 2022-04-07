@@ -3,6 +3,7 @@ import { addToLikes, deleteFromLikes } from "../../services";
 import { RiHeartAddLine, RiDislikeLine } from "react-icons/ri";
 import styles from "./ActionButton.module.css";
 import React from "react";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function LikesButton({ video, text = false }) {
   const {
@@ -10,7 +11,9 @@ function LikesButton({ video, text = false }) {
     dispatch: userDataDispatch,
   } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
 
   return likes.some((item) => item._id === video._id) ? (
     <button

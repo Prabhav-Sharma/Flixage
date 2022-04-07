@@ -5,6 +5,7 @@ import { useUserData } from "../../contexts/providers/UserDataProvider";
 import { addPlaylist, addToPlaylist, removeFromPlaylist } from "../../services";
 import { AiOutlineFileAdd, AiOutlineCloseCircle } from "react-icons/ai";
 import { TextInput } from "../index";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function PlaylistModal({ show, video }) {
   const { modalToggle, setModalToggle } = show;
@@ -18,7 +19,9 @@ function PlaylistModal({ show, video }) {
 
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
 
   const PlayListItem = ({ playlist, id }) => {
     const itemInPlaylist = playlist.videos.some((item) => item._id === id);

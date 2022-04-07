@@ -2,6 +2,7 @@ import { useUserData } from "../../contexts/providers/UserDataProvider";
 import { addToWatchLater, deleteFromWatchLater } from "../../services";
 import styles from "./ActionButton.module.css";
 import { MdOutlineWatchLater } from "react-icons/md";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 const WatchLaterButton = ({ video, text = false }) => {
   const {
@@ -9,7 +10,9 @@ const WatchLaterButton = ({ video, text = false }) => {
     dispatch: userDataDispatch,
   } = useUserData();
 
-  const token = localStorage.getItem("token");
+  const {
+    authState: { token },
+  } = useAuth();
 
   return watchlater.some((item) => item._id === video._id) ? (
     <button

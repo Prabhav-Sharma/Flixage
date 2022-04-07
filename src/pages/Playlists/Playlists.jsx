@@ -12,12 +12,17 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import { BsMusicPlayer } from "react-icons/bs";
 import { TextInput, HorizontalVideoCard } from "../../components";
 import { GoTrashcan } from "react-icons/go";
+import { useAuth } from "../../contexts/providers/AuthProvider";
 
 function Playlists() {
   const {
     state: { playlists },
     dispatch: userDataDispatch,
   } = useUserData();
+
+  const {
+    authState: { token },
+  } = useAuth();
 
   const [currentPlaylist, setCurrentPlaylist] = useState({
     title: "Playlist",
@@ -29,8 +34,6 @@ function Playlists() {
   useEffect(() => {
     fetchAllPlaylists(token, userDataDispatch);
   }, []);
-
-  const token = localStorage.getItem("token");
 
   const [newPlaylistTitle, setNewPlaylistTitle] = useState("");
 
