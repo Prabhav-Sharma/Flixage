@@ -1,0 +1,29 @@
+.actionBtns{
+    gap:var(--rem-0-5);
+    justify-self: flex-end;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.bottom_wrapper{
+    justify-content: space-between;
+    margin-top: var(--rem-0-5);
+}
+
+.details_wrapper{
+    display: flex;
+}
+
+.bottom_right_wrapper {
+    gap: var(--rem-0-75);
+    padding: var(--rem-0-25);
+    background-color: transparent;
+    color: var(--color-gray);
+  }
+
+  .channel_icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: var(--rem-0-25);
+    border-radius: 50%;
+  }
