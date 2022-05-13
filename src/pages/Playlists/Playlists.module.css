@@ -41,7 +41,7 @@
 .add_icon{
     font-size: var(--rem-2-25);
     color:var(--color-white);
-    vertical-align: sub;
+    align-self: flex-end;
     padding: var(--rem-0-25);
 }
 
