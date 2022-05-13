@@ -37,7 +37,12 @@ function Login() {
       return;
     }
 
-    await login({ email, password }, setLoginToggle, authDispatch);
+    const status = await login(
+      { email, password },
+      setLoginToggle,
+      authDispatch
+    );
+    if (status !== "SUCCESS") return;
     const pathName = location?.state?.from?.pathname;
     pathName ? navigate(pathName) : navigate("/");
   };
@@ -45,7 +50,7 @@ function Login() {
   const guestLoginHandler = async (e) => {
     e.preventDefault();
 
-    await login(
+    const status = await login(
       {
         email: "guest@gmail.com",
         password: "guest@gmail.com",
@@ -53,6 +58,8 @@ function Login() {
       setGuestLoginToggle,
       authDispatch
     );
+
+    if (status !== "SUCCESS") return;
     const pathName = location?.state?.from?.pathname;
     navigate(pathName ? pathName : "/");
   };
