@@ -1,6 +1,8 @@
+import { LOGIN_ACTION, SIGNUP_ACTION, LOGOUT_ACTION } from "../../utils";
+
 const authReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case LOGIN_ACTION:
       return {
         ...state,
         user: action.payload.user,
@@ -8,7 +10,7 @@ const authReducer = (state, action) => {
         token: action.payload.token,
       };
 
-    case "SIGN_UP":
+    case SIGNUP_ACTION:
       return {
         ...state,
         user: action.payload.user,
@@ -16,7 +18,7 @@ const authReducer = (state, action) => {
         token: action.payload.token,
       };
 
-    case "LOGOUT":
+    case LOGOUT_ACTION:
       localStorage.removeItem("token");
       return { ...state, isAuthenticated: false, user: {}, token: null };
 

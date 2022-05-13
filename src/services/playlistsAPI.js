@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { UPDATE_PLAYLIST_ACTION, UPDATE_PLAYLISTS_ACTION } from "../utils";
 //calls for operations on playlists
 const fetchAllPlaylists = async (token, dispatcher) => {
   try {
@@ -9,7 +10,7 @@ const fetchAllPlaylists = async (token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_PLAYLISTS",
+      type: UPDATE_PLAYLISTS_ACTION,
       payload: { playlists: response.data.playlists },
     });
   } catch (e) {
@@ -27,7 +28,7 @@ const addPlaylist = async (requestData, token, dispatcher) => {
       data: { playlist: requestData },
     });
     dispatcher({
-      type: "UPDATE_PLAYLISTS",
+      type: UPDATE_PLAYLISTS_ACTION,
       payload: { playlists: response.data.playlists },
     });
     toast.success("Playlist Added!");
@@ -45,7 +46,7 @@ const removePlaylist = async (id, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_PLAYLISTS",
+      type: UPDATE_PLAYLISTS_ACTION,
       payload: { playlists: response.data.playlists },
     });
     toast.success("Playlist Removed!");
@@ -66,7 +67,7 @@ const fetchPlaylist = async (playlistId, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_PLAYLIST",
+      type: UPDATE_PLAYLIST_ACTION,
       payload: { playlist: response.data.playlist },
     });
   } catch (e) {
@@ -86,7 +87,7 @@ const addToPlaylist = async (playlistId, requestData, token, dispatcher) => {
       data: requestData,
     });
     dispatcher({
-      type: "UPDATE_PLAYLIST",
+      type: UPDATE_PLAYLIST_ACTION,
       payload: { playlist: response.data.playlist },
     });
     toast.success("Video added to playlist!");
@@ -106,7 +107,7 @@ const removeFromPlaylist = async (playlistId, videoId, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_PLAYLIST",
+      type: UPDATE_PLAYLIST_ACTION,
       payload: { playlist: response.data.playlist },
     });
     toast.success("Video removed from playlist!");

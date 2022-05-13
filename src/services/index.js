@@ -1,4 +1,3 @@
-import axios from "axios";
 import { login, signup } from "./authAPI";
 import {
   fetchHistory,
@@ -29,21 +28,11 @@ import {
   addToPlaylist,
   removeFromPlaylist,
 } from "./playlistsAPI";
-
-const fetchVideos = async (setterFunc) => {
-  try {
-    const response = await axios({
-      method: "GET",
-      url: "/api/videos",
-    });
-    setterFunc(response.data.videos);
-  } catch (e) {
-    console.log(e);
-  }
-};
+import { fetchVideos, fetchVideo } from "./videosAPI";
 
 export {
   fetchVideos,
+  fetchVideo,
   login,
   signup,
   fetchHistory,
