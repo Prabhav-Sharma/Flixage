@@ -22,7 +22,10 @@ function PlaylistButton({ video, text = false }) {
         className={
           videoInPlaylists ? styles.action_btn_active : styles.action_btn
         }
-        onClick={() => setModalToggle(true)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setModalToggle(true);
+        }}
       >
         <CgPlayListAdd className={styles.action_icon} />
         {text && "Add to Playlist"}

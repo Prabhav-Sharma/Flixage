@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./VideoCard.module.css";
 import { AiOutlineDelete, AiOutlineClose } from "react-icons/ai";
 import { TiThumbsDown } from "react-icons/ti";
@@ -10,9 +9,11 @@ import {
 import { useUserData } from "../../../contexts/providers/UserDataProvider";
 import { WatchLaterButton, LikesButton, PlaylistButton } from "../../index";
 import { useAuth } from "../../../contexts/providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 function VideoCard({ video, type }) {
   const { dispatch: userDataDispatch } = useUserData();
+  const navigate = useNavigate();
 
   const {
     authState: { token },
@@ -30,20 +31,30 @@ function VideoCard({ video, type }) {
     views,
   } = video;
 
+  const navigateToVideo = () => {
+    navigate(`/video/${_id}`);
+  };
+
   const FABButton = ({ type }) => {
     switch (type) {
       case "HISTORY":
         return (
           <AiOutlineDelete
             className={styles.fab_btn}
-            onClick={() => deleteFromHistory(_id, token, userDataDispatch)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteFromHistory(_id, token, userDataDispatch);
+            }}
           />
         );
       case "WATCH_LATER":
         return (
           <AiOutlineClose
             className={styles.fab_btn}
-            onClick={() => deleteFromWatchLater(_id, token, userDataDispatch)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteFromWatchLater(_id, token, userDataDispatch);
+            }}
           />
         );
 
@@ -51,7 +62,10 @@ function VideoCard({ video, type }) {
         return (
           <TiThumbsDown
             className={styles.fab_btn}
-            onClick={() => deleteFromLikes(_id, token, userDataDispatch)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteFromLikes(_id, token, userDataDispatch);
+            }}
           />
         );
       default:
@@ -60,7 +74,7 @@ function VideoCard({ video, type }) {
   };
 
   return (
-    <div className={`${styles.video_card} flex-col`}>
+    <div className={`${styles.video_card} flex-col`} onClick={navigateToVideo}>
       <div className={styles.top_wrapper}>
         <img className={styles.card_img} src={thumbnail} alt={title} />
         <p className={styles.video_length}>{playtime}</p>

@@ -18,7 +18,10 @@ function LikesButton({ video, text = false }) {
   return likes.some((item) => item._id === video._id) ? (
     <button
       className={styles.action_btn_active}
-      onClick={() => deleteFromLikes(video._id, token, userDataDispatch)}
+      onClick={(e) => {
+        e.stopPropagation();
+        deleteFromLikes(video._id, token, userDataDispatch);
+      }}
     >
       <RiDislikeLine className={styles.action_icon} />
       {text && "Unlike"}
@@ -26,7 +29,10 @@ function LikesButton({ video, text = false }) {
   ) : (
     <button
       className={styles.action_btn}
-      onClick={() => addToLikes({ video: video }, token, userDataDispatch)}
+      onClick={(e) => {
+        e.stopPropagation();
+        addToLikes({ video: video }, token, userDataDispatch);
+      }}
     >
       <RiHeartAddLine className={styles.action_icon} />
       {text && "Like"}
