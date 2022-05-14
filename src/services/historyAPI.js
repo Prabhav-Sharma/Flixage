@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { UPDATE_HISTORY_ACTION } from "../utils";
 
 const fetchHistory = async (token, dispatcher) => {
   try {
@@ -11,7 +12,7 @@ const fetchHistory = async (token, dispatcher) => {
       },
     });
     dispatcher({
-      type: "UPDATE_HISTORY",
+      type: UPDATE_HISTORY_ACTION,
       payload: { history: response.data.history },
     });
   } catch (e) {
@@ -29,11 +30,10 @@ const addToHistory = async (requestData, token, dispatcher) => {
       data: requestData,
     });
     dispatcher({
-      type: "UPDATE_HISTORY",
+      type: UPDATE_HISTORY_ACTION,
       payload: { history: response.data.history },
     });
   } catch (e) {
-    toast.error("Uh oh, something broke 🥺");
     console.log(e);
   }
 };
@@ -46,7 +46,7 @@ const deleteFromHistory = async (id, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_HISTORY",
+      type: UPDATE_HISTORY_ACTION,
       payload: { history: response.data.history },
     });
 
@@ -65,7 +65,7 @@ const clearAllHistory = async (token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_HISTORY",
+      type: UPDATE_HISTORY_ACTION,
       payload: { history: response.data.history },
     });
     toast.success("It's like nothing ever happened between us 🥺");

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { UPDATE_LIKES_ACTION } from "../utils";
 
 const fetchLikes = async (token, dispatcher) => {
   try {
@@ -10,7 +11,7 @@ const fetchLikes = async (token, dispatcher) => {
     });
 
     dispatcher({
-      type: "UPDATE_LIKES",
+      type: UPDATE_LIKES_ACTION,
       payload: { likes: response.data.likes },
     });
   } catch (e) {
@@ -28,7 +29,7 @@ const addToLikes = async (requestData, token, dispatcher) => {
       data: requestData,
     });
     dispatcher({
-      type: "UPDATE_LIKES",
+      type: UPDATE_LIKES_ACTION,
       payload: { likes: response.data.likes },
     });
     toast.success("Video added to your liked videos");
@@ -46,7 +47,7 @@ const deleteFromLikes = async (id, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_LIKES",
+      type: UPDATE_LIKES_ACTION,
       payload: { likes: response.data.likes },
     });
     toast.success("You'll find new videos to like!");
@@ -64,7 +65,7 @@ const clearAllLikes = async (token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_LIKES",
+      type: UPDATE_LIKES_ACTION,
       payload: { likes: response.data.likes },
     });
     toast.success("New day, new likes?");

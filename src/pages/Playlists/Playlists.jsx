@@ -97,7 +97,10 @@ function Playlists() {
               <HorizontalVideoCard
                 key={video._id}
                 video={video}
-                onClick={() => removeFromPlaylistHandler(video._id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeFromPlaylistHandler(video._id);
+                }}
               />
             ))
           ) : (

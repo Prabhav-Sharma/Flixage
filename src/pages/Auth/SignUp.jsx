@@ -46,11 +46,12 @@ function SignUp() {
     //   return;
     // }
 
-    await signup(
+    const status = await signup(
       { userName: fullName, email, password },
       setToggle,
       authDispatch
     );
+    if (status !== "SUCCESS") return;
     const pathName = location?.state?.from?.pathname;
     navigate(pathName ? pathName : "/");
   };

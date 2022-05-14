@@ -17,7 +17,10 @@ const WatchLaterButton = ({ video, text = false }) => {
   return watchlater.some((item) => item._id === video._id) ? (
     <button
       className={styles.action_btn_active}
-      onClick={() => deleteFromWatchLater(video._id, token, userDataDispatch)}
+      onClick={(e) => {
+        e.stopPropagation();
+        deleteFromWatchLater(video._id, token, userDataDispatch);
+      }}
     >
       <MdOutlineWatchLater className={styles.action_icon} />
       {text && "Remove from watchlater"}
@@ -25,7 +28,10 @@ const WatchLaterButton = ({ video, text = false }) => {
   ) : (
     <button
       className={styles.action_btn}
-      onClick={() => addToWatchLater({ video: video }, token, userDataDispatch)}
+      onClick={(e) => {
+        e.stopPropagation();
+        addToWatchLater({ video: video }, token, userDataDispatch);
+      }}
     >
       <MdOutlineWatchLater className={styles.action_icon} />
       {text && "Add to watchlater"}

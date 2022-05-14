@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { UPDATE_WATCH_LATER_ACTION } from "../utils";
 
 const fetchWatchLater = async (token, dispatcher) => {
   try {
@@ -10,7 +11,7 @@ const fetchWatchLater = async (token, dispatcher) => {
     });
 
     dispatcher({
-      type: "UPDATE_WATCH_LATER",
+      type: UPDATE_WATCH_LATER_ACTION,
       payload: { watchlater: response.data.watchlater },
     });
   } catch (e) {
@@ -28,7 +29,7 @@ const addToWatchLater = async (requestData, token, dispatcher) => {
       data: requestData,
     });
     dispatcher({
-      type: "UPDATE_WATCH_LATER",
+      type: UPDATE_WATCH_LATER_ACTION,
       payload: { watchlater: response.data.watchlater },
     });
     toast.success("Say you'll remember me?");
@@ -46,7 +47,7 @@ const deleteFromWatchLater = async (id, token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_WATCH_LATER",
+      type: UPDATE_WATCH_LATER_ACTION,
       payload: { watchlater: response.data.watchlater },
     });
     toast.success("Phew! There goes one off the list!");
@@ -64,7 +65,7 @@ const removeAllWatchLater = async (token, dispatcher) => {
       headers: { authorization: token },
     });
     dispatcher({
-      type: "UPDATE_WATCH_LATER",
+      type: UPDATE_WATCH_LATER_ACTION,
       payload: { watchlater: response.data.watchlater },
     });
     toast.success("New list, who this? 😊");
