@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <ToastContainer theme="dark" autoClose={2000} />
+      <ToastContainer theme="dark" autoClose={1000} />
       <main>
         <Router />
       </main>
