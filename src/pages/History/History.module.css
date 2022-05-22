@@ -32,13 +32,15 @@
     text-align: center;
 }
 
-.explore_btn, .dummy_btn{
+.explore_btn{
     width: 15rem;
     align-self: center;
+    display: flex;
+    justify-content: center;
 }
 
 .link_style{
-    color: var(--white);
+    color: var(--color-white);
     text-decoration: none;
 }
 
