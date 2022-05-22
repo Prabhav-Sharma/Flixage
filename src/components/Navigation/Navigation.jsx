@@ -5,6 +5,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/providers/AuthProvider";
 import { useVideos } from "../../contexts/providers/VideosProvider";
 import { fetchVideos } from "../../services";
+import { LOGOUT_ACTION } from "../../utils";
 import {
   GiHamburgerMenu,
   MdOutlineWatchLater,
@@ -94,7 +95,7 @@ function Navigation() {
         {isAuthenticated ? (
           <RiLogoutCircleRLine
             className={styles.authentication_icon}
-            onClick={() => authDispatch({ type: "LOGOUT" })}
+            onClick={() => authDispatch({ type: LOGOUT_ACTION })}
           />
         ) : (
           <CgProfile
@@ -145,7 +146,7 @@ function Navigation() {
               <li>
                 <NavLink
                   to="/login"
-                  onClick={() => authDispatch({ type: "LOGOUT" })}
+                  onClick={() => authDispatch({ type: LOGOUT_ACTION })}
                   className={linkStyle}
                 >
                   <BiLogOut /> Logout
