@@ -10,7 +10,7 @@ import {
   Playlists,
   WatchLater,
   Video,
-  Likes,
+  Liked,
   NotFound,
 } from "../pages";
 
@@ -22,7 +22,7 @@ function Router() {
     <Routes>
       <Route element={<ProtectedRoutes />}>
         <Route path="/history" element={<History />} />
-        <Route path="/likes" element={<Likes />} />
+        <Route path="/likes" element={<Liked />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/playlists" element={<Playlists />} />
       </Route>

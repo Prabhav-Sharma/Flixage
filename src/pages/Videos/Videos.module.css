@@ -3,4 +3,26 @@
   grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   padding: var(--rem-1);
 }
-/* For future addition of categories */
+
+.categories{
+  display: flex;
+  align-items: center;
+  gap:0.5rem;
+  font-size: var(--rem-1-5);
+  margin: var(--rem-1) 0 0 var(--rem-0-75);
+  color: var(--color-white);
+  width: 98vw;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.category_label{
+  padding: 0.75rem;
+  background-color: var(--color-onyx);
+  border-radius: 1.5rem;
+  font-size:1rem;
+  cursor: pointer;
+}
+
+.category_active{
+  background-color: var(--color-primary);
+}
