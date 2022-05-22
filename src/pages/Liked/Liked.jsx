@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useUserData } from "../../contexts/providers/UserDataProvider";
-import styles from "./Likes.module.css";
+import styles from "./Liked.module.css";
 import { VideoGrid } from "../../components";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { MdOutlineExplore } from "react-icons/md";
@@ -10,7 +10,7 @@ import { useDocumentTitle } from "../../hooks";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useAuth } from "../../contexts/providers/AuthProvider";
 
-function Likes() {
+function Liked() {
   const {
     state: { likes },
     dispatch: userDataDispatch,
@@ -64,4 +64,4 @@ function Likes() {
   );
 }
 
-export default Likes;
+export default Liked;

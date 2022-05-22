@@ -104,9 +104,7 @@ function Playlists() {
               />
             ))
           ) : (
-            <h2 className={styles.empty_msg}>
-              Uh Oh, seems like you forgot to add videos to this playlist!
-            </h2>
+            <h2 className={styles.empty_msg}>No videos to show!</h2>
           )}
         </div>
         <div className={`${styles.side_wrapper} flex-col`}>

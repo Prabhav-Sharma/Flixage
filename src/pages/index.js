@@ -6,7 +6,7 @@ import SignUp from "./Auth/SignUp";
 import Playlists from "./Playlists/Playlists";
 import WatchLater from "./WatchLater/WatchLater";
 import Video from "./Video/Video";
-import Likes from "./Likes/Likes";
+import Liked from "./Liked/Liked";
 import NotFound from "./NotFound/NotFound";
 
 export {
@@ -18,6 +18,6 @@ export {
   Playlists,
   WatchLater,
   Video,
-  Likes,
+  Liked,
   NotFound,
 };

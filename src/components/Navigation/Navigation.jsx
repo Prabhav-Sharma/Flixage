@@ -1,23 +1,49 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styles from "./Navigation.module.css";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { MdOutlineWatchLater, MdSlowMotionVideo } from "react-icons/md";
-import { FaHome, FaHistory } from "react-icons/fa";
-import { BsPlayBtn, BsHeart } from "react-icons/bs";
 import { useToggle } from "../../hooks";
-import { NavLink, useNavigate } from "react-router-dom";
-import { BiLogOut, BiLogIn } from "react-icons/bi";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/providers/AuthProvider";
-import { toast } from "react-toastify";
+import { useVideos } from "../../contexts/providers/VideosProvider";
+import { fetchVideos } from "../../services";
+import { LOGOUT_ACTION } from "../../utils";
+import {
+  GiHamburgerMenu,
+  MdOutlineWatchLater,
+  MdSlowMotionVideo,
+  FaHome,
+  FaHistory,
+  BsPlayBtn,
+  BsHeart,
+  BiLogOut,
+  BiLogIn,
+  RiLogoutCircleRLine,
+  CgProfile,
+} from "../../utils/icons";
 
 function Navigation() {
   const { toggle: visible, setToggle: setVisible } = useToggle(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [query, setQuery] = useState("");
 
   const {
     authState: { isAuthenticated },
     authDispatch,
   } = useAuth();
+
+  const { videos, setVideos } = useVideos();
+
+  useEffect(() => {
+    fetchVideos(setVideos);
+  }, []);
+
+  const searchVideos = (videos, query) => {
+    if (query.trim().length === 0) return [];
+
+    return videos.filter((video) =>
+      video.title.toLowerCase().includes(query.toLowerCase())
+    );
+  };
 
   const linkStyle = ({ isActive }) =>
     isActive
@@ -38,20 +64,45 @@ function Navigation() {
             Flix<span className={styles.red}>age</span>
           </h1>
         </div>
-        <input
-          className={styles.nav_search}
-          placeholder="Search across your favourite tittles here.."
-          type={"text"}
-        />
-        <a>
-          <img
-            className={styles.profile_icon}
-            src={
-              "https://res.cloudinary.com/carsmart/image/upload/v1648707066/Flixage/icons/alien_2_wvzwe6.png"
-            }
-            onClick={() => toast.info("Feature Pending")}
+        <div className={styles.search_bar}>
+          <input
+            className={styles.nav_search}
+            placeholder="Search across your favourite tittles here.."
+            type={"text"}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-        </a>
+          <ul
+            style={{
+              display:
+                searchVideos(videos, query).length === 0 ? "none" : "flex",
+            }}
+            className={styles.search_results}
+          >
+            {searchVideos(videos, query).map((video) => (
+              <li
+                key={video._id}
+                onClick={() => {
+                  setQuery("");
+                  navigate(`/video/${video._id}`);
+                }}
+              >
+                {video.title}
+              </li>
+            ))}
+          </ul>
+        </div>
+        {isAuthenticated ? (
+          <RiLogoutCircleRLine
+            className={styles.authentication_icon}
+            onClick={() => authDispatch({ type: LOGOUT_ACTION })}
+          />
+        ) : (
+          <CgProfile
+            className={styles.authentication_icon}
+            onClick={() => navigate("/login", { state: { from: location } })}
+          />
+        )}
       </nav>
 
       <aside
@@ -95,7 +146,7 @@ function Navigation() {
               <li>
                 <NavLink
                   to="/login"
-                  onClick={() => authDispatch({ type: "LOGOUT" })}
+                  onClick={() => authDispatch({ type: LOGOUT_ACTION })}
                   className={linkStyle}
                 >
                   <BiLogOut /> Logout
