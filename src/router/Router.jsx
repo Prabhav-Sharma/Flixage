@@ -1,6 +1,4 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import {
   Home,
   Videos,
@@ -13,7 +11,6 @@ import {
   Liked,
   NotFound,
 } from "../pages";
-
 import ProtectedRoutes from "./ProtectedRoutes";
 import MockAPI from "../pages/MockAPI";
 
