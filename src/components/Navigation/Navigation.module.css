@@ -16,8 +16,7 @@
   font-size: 2rem;
 }
 
-.nav_heading:hover,
-.profile_icon:hover {
+.nav_heading:hover{
   animation: shake 0.5s;
   cursor: pointer;
 }
@@ -49,26 +48,49 @@
 .nav_search {
   padding: var(--rem-0-5);
   border-radius: var(--rem-0-5);
-  max-width: 20rem;
-  flex-grow: 1;
+  width: 100%;
   background-image: url("https://res.cloudinary.com/carsmart/image/upload/v1647404723/icons/search_i9fe3a.png");
   background-position: var(--rem-0-5) var(--rem-0-5);
   background-repeat: no-repeat;
   background-size: 15px;
   padding-left: var(--rem-1-75);
   font-size: 1rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.profile_icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  filter: invert(100%);
-  border-radius: 50%;
-  padding: var(--rem-0-25);
-  border: 1px solid var(--color-black);
+.search_bar{
+  max-width: 20rem;
+  flex-grow: 1;
+  position: relative;;
+}
+
+.search_results{
+  position: absolute;
+  transform: translateX(0.25rem);
+  background-color: var(--color-onyx);
+  width:21rem;
+  color: white;
+  flex-direction: column;
+  gap:1rem;
+  max-height: 15rem;
+  overflow: clip;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.search_results>li{
+  max-width: 95%;
+}
+
+.search_results>li:hover{
+cursor: pointer;
+}
+
+.authentication_icon{
+  color:white;
+  font-size: 2rem;
   cursor: pointer;
 }
+
 .red {
   color: var(--color-black);
 }
@@ -87,8 +109,9 @@ aside {
 }
 
 .aside_hidden {
-  left: -17rem;
+  left: -17rem;;
 }
+
 .list {
   width: 100%;
   align-items: flex-start;
