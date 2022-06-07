@@ -6,6 +6,7 @@
   font-family: sans-serif;
   height: 18rem;
   transition: all 0.2s linear;
+  background-color: #1e1d1d;
 }
 
 .video_card:hover {
