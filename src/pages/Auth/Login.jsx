@@ -94,7 +94,7 @@ function Login() {
           }
           autoComplete={"current-password"}
         />
-        {/* Only for illustration, functioning will be added later! */}
+        {/* Only for illustration, functionality will be added later! */}
         <span className={`${styles.form_span} flex-row`}>
           <label>
             <input type="checkbox" />

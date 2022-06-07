@@ -41,6 +41,7 @@ function Videos() {
         ))}
       </div>
       <VideoGrid
+        alignCenter={true}
         videos={
           currentCategory === "All"
             ? videos
