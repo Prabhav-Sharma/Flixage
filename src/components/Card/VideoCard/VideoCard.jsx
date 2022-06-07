@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 function VideoCard({ video, type }) {
   const { dispatch: userDataDispatch } = useUserData();
   const navigate = useNavigate();
-
   const {
     authState: { token },
   } = useAuth();
@@ -90,8 +89,7 @@ function VideoCard({ video, type }) {
             <p>{views.toLocaleString()} views</p> • <p>{dateUploaded}</p>
           </span>
         </div>
-
-        {token && type === "default" && (
+        {type === "default" && (
           <span className={`${styles.action_btn_wrapper} flex-row`}>
             <WatchLaterButton video={video} />
             <LikesButton video={video} />

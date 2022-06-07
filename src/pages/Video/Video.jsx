@@ -76,22 +76,20 @@ function Video() {
               </span>
             </div>
           </div>
-          {isAuthenticated && (
-            <span className={`${styles.actionBtns} flex-row`}>
-              <PlaylistButton
-                text={screenWidth > 520 ? true : false}
-                video={video}
-              />
-              <WatchLaterButton
-                text={screenWidth > 520 ? true : false}
-                video={video}
-              />
-              <LikesButton
-                text={screenWidth > 520 ? true : false}
-                video={video}
-              />
-            </span>
-          )}
+          <span className={`${styles.actionBtns} flex-row`}>
+            <PlaylistButton
+              text={screenWidth > 520 ? true : false}
+              video={video}
+            />
+            <WatchLaterButton
+              text={screenWidth > 520 ? true : false}
+              video={video}
+            />
+            <LikesButton
+              text={screenWidth > 520 ? true : false}
+              video={video}
+            />
+          </span>
         </div>
       </div>
     </section>

@@ -1,7 +1,11 @@
 .videos_wrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 24.5rem);
+    grid-template-columns: repeat(auto-fit, 22.5rem);
     padding: var(--rem-1);
     gap:var(--rem-0-5);
+}
+
+.align_center{
     justify-content: center;
 }
+
