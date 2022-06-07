@@ -4,6 +4,8 @@ import { RiHeartAddLine, RiDislikeLine } from "react-icons/ri";
 import styles from "./ActionButton.module.css";
 import React from "react";
 import { useAuth } from "../../contexts/providers/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function LikesButton({ video, text = false }) {
   const {
@@ -15,11 +17,23 @@ function LikesButton({ video, text = false }) {
     authState: { token },
   } = useAuth();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const navigateToLogin = () => {
+    toast.info("You need to login first!");
+
+    navigate("/login", { state: { from: location } });
+  };
+
   return likes.some((item) => item._id === video._id) ? (
     <button
       className={styles.action_btn_active}
       onClick={(e) => {
         e.stopPropagation();
+        if (!token) {
+          navigateToLogin();
+          return;
+        }
         deleteFromLikes(video._id, token, userDataDispatch);
       }}
     >
@@ -31,6 +45,10 @@ function LikesButton({ video, text = false }) {
       className={styles.action_btn}
       onClick={(e) => {
         e.stopPropagation();
+        if (!token) {
+          navigateToLogin();
+          return;
+        }
         addToLikes({ video: video }, token, userDataDispatch);
       }}
     >
